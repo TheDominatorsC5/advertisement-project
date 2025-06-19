@@ -20,7 +20,7 @@ export default function Navbar() {
 
             </div>
 
-            <div className="flex flex-row justify-between px-20 py-6 bg-white text-black">
+            <div className="flex flex-row justify-between px-25 py-6 bg-white text-black">
                 <h1 className="font-bold text-xl">
                     {/* Logo */}
                     <a href="">
@@ -33,9 +33,9 @@ export default function Navbar() {
                 <div className="hidden md:flex space-x-8">
                     <a href="#" className="hover:text-[#E6C744]">Home</a>
                     {/* <a href="#about" className="hover:text-[#E6C744]">Category</a> */}
-                    <a href="#skills" className="hover:text-[#E6C744]">About</a>
-                    <a href="#project" className="hover:text-[#E6C744]">Contact</a>
-                    <a href="#contact" className="hover:text-[#E6C744]">Sign Up</a>
+                    <a href="#" className="hover:text-[#E6C744]">About</a>
+                    <a href="#" className="hover:text-[#E6C744]">Contact</a>
+                    <a href="#" className="hover:text-[#E6C744]">Sign Up</a>
                 </div>
 
                 <div className="flex flex-row gap-3">
