@@ -10,11 +10,11 @@ export default function Footer() {
                         Is a community-driven eCommerce platform dedicated to showcasing and selling products from local brands, artisans, and small businesses. By offering an easy-to-use online storefront. It gives neighborhood creators broader vsibility and connects buyers directly with them.
                     </p>
 
-                    <div className="flex flex-row gap-4 text pt-5 text-zinc-400">
-                        <Facebook />
-                        <Twitter />
-                        <Instagram />
-                        <Linkedin />
+                    <div className="flex flex-row gap-4 text pt-5 text-black">
+                        <Facebook className="fill-zinc-400 stroke-0" />
+                        <Twitter className="fill-zinc-400 stroke-0" />
+                        <Instagram className="fill-zinc-400 stroke-1"  />
+                        <Linkedin className="fill-zinc-400 stroke-0" />
                     </div>
                 </div>
 
@@ -36,14 +36,14 @@ export default function Footer() {
                 <div className=" w-20 leading-6 flex flex-col pt-10">
                     <a href="#">Pottery</a>
                     <a href="#">Textiles</a>
-                    <a href="#">Wooven Pieces</a>
+                    <a href="#">Wooden Pieces</a>
                 </div>
 
                 <div className=" w-50 leading-6 flex flex-col">
                     <h6 className="text-lg font-bold pb-3">Subscribe</h6>
                     <label htmlFor="">Get 10% Off your first order</label>
                     <input 
-                    type="email" 
+                    type="text" 
                     name="email" 
                     id="" 
                     placeholder="Enter your email"
