@@ -30,7 +30,7 @@ const adwumaCraftRouter = createBrowserRouter([
   { path: '/pottery', element: <Pottery /> },
   { path: '/accessories', element: <Accessories /> },
   { path: '/textile', element: <Textile /> },
-  { path: '/artandpaints', element: <ArtAndPaintings /> },
+  { path: '/artandpaintings', element: <ArtAndPaintings /> },
   { path: '/homedecor', element: <HomeDecor /> },
   { path: '*', element: <NotFound /> },
 ]);
