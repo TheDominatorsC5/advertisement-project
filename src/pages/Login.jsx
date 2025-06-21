@@ -1,5 +1,7 @@
 // import loginPageImage from '../assets/Images/loginPage.jpg';
 // import SubmitButton from "../components/SubmitButton"
+import React from 'react';
+import RotatingHeadings from '../components/RotatingHeadings';
 
 export default function Login() {
     return (
@@ -13,8 +15,8 @@ export default function Login() {
 
             <div className="bg-[url(./assets/images/africanInspiredPatternSignupScreen.jpg)] rounded text-slate-800 relative h-[100vh] flex items-center justify-around bg-cover bg-center bg-no-repeat">
 
-                <div className="flex items-center gap-8">
-                    
+                <div className="flex flex-col-reverse md:flex-row items-center gap-8">
+
                     <div className="w-96 p-8 bg-white rounded-xl">
                         <h1></h1>
                         <form action="">
@@ -24,7 +26,7 @@ export default function Login() {
                                 type="email"
                                 name=""
                                 id=""
-                                class="mt-1 block w-full px-3 py-2 border border-gray-500 rounded-md shadow-sm focus:outline-none focus:ring-[#7848F4] focus:border-[#7848F4] sm:text-sm"
+                                class="mt-1 block w-full px-3 py-2 border border-gray-500 rounded-md shadow-sm focus:outline-none focus:ring-[#29492f] focus:border-green-700 sm:text-sm"
                                 placeholder="e.g., yawkesse369@gmail.com"
                             />
 
@@ -33,31 +35,30 @@ export default function Login() {
                                 type="password"
                                 name=""
                                 id=""
-                                class="mt-1 block w-full px-3 py-2 border border-gray-500 rounded-md shadow-sm focus:outline-none focus:ring-[#7848F4] focus:border-[#7848F4] sm:text-sm"
+                                class="mt-1 block w-full px-3 py-2 border border-gray-500 rounded-md shadow-sm focus:outline-none focus:ring-[#29492f] focus:border-green-700 sm:text-sm"
                                 placeholder="**********"
                             />
 
 
 
-                            <div className="flex justify-between">
-                                <button className="">Login</button>
-                                <button>Forgot Password?</button>
+                            <div className="flex justify-between my-4">
+                                <button className="bg-green-700 text-white hover:bg-[#29492f] transition duration-300 block px-8 py-2 border rounded-md font-semibold"><a href="">Login</a></button>
+                                <button className='text-green-700 hover:text-[#29492f]'><a href="">Forgot Password?</a></button>
                             </div>
 
                             <div className="flex items-center">
                                 <div className="flex-grow border-t border-gray-500"></div>
-                                <span className="mx-2">Don't have an account?</span>
+                                <span className="mx-2 font-semibold">Don't have an account?</span>
                                 <div className="flex-grow border-t border-gray-500"></div>
                             </div>
 
-                            <p className="flex justify-center"> Signup</p>
+                            <a href="" className="flex justify-center text-green-700 hover:text-[#29492f] font-semibold mt-2">Sign Up</a>
 
                         </form>
                     </div>
 
-                    <div className="text-white font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
-                        <h1>WELCOME</h1>
-                        <h1>AKWAABA!</h1>
+                    <div className='w-98'>
+                        <RotatingHeadings />
                     </div>
                 </div>
             </div>
