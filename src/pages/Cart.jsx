@@ -6,7 +6,7 @@ export default function Cart() {
         <>
             <Navbar />
 
-            <div className="grid grid-flow-row gap-8 mx-8">
+            <div className="grid grid-flow-row gap-8 mx-8 md:mx-24">
 
                 <div>
                     <p className="mb-2 md:my-6">

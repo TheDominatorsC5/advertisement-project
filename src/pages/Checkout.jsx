@@ -7,7 +7,7 @@ export default function Checkout() {
     return (
         <>
             <Navbar />
-            <div className="container md:flex justify-evenly items-end text-slate-500 mx-8">
+            <div className="container md:flex justify-evenly items-end text-slate-500 gap-24">
                 <div className=" w-full md:w-[40%]">
                     <p className="mb-2 md:my-6">
                         <a href="">Home</a>
@@ -24,43 +24,43 @@ export default function Checkout() {
                             type="text"
                             name=""
                             id=""
-                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#7848F4] focus:border-[#7848F4]" />
+                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#29492f] focus:border-green-700" />
                         <label class="block font-medium mb-1" htmlFor="">Last Name</label>
                         <input
                             type="text"
                             name=""
                             id=""
-                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#7848F4] focus:border-[#7848F4]" />
+                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#29492f] focus:border-green-700" />
                         <label class="block font-medium mb-1" htmlFor="">Street Address</label>
                         <input
                             type=""
                             name=""
                             id=""
-                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#7848F4] focus:border-[#7848F4]" />
+                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#29492f] focus:border-green-700" />
                         <label class="block font-medium mb-1" htmlFor="">Appartment, floor, etc,(optional)</label>
                         <input
                             type="text"
                             name=""
                             id=""
-                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#7848F4] focus:border-[#7848F4]" />
+                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#29492f] focus:border-green-700" />
                         <label class="block font-medium mb-1" htmlFor="">Town / City</label>
                         <input
                             type="text"
                             name=""
                             id=""
-                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#7848F4] focus:border-[#7848F4]" />
+                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#29492f] focus:border-green-700" />
                         <label class="block font-medium mb-1" htmlFor="">Phone Number</label>
                         <input
-                            type="text"
+                            type="number"
                             name=""
                             id=""
-                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#7848F4] focus:border-[#7848F4]" />
+                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#29492f] focus:border-green-700" />
                         <label class="block font-medium mb-1" htmlFor="">Email Address</label>
                         <input
-                            type="text"
+                            type="email"
                             name=""
                             id=""
-                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#7848F4] focus:border-[#7848F4]" />
+                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#29492f] focus:border-green-700" />
                     </form>
                 </div>
                 <div className="mt-12">
@@ -76,11 +76,13 @@ export default function Checkout() {
                 </div>
             </div>
 
-            <div>
-                <ProductCards />
-            </div>
-            <div>
-                <ViewAProduct />
+            <div classname="w-full mx-16">
+                <div>
+                    <ProductCards />
+                </div>
+                <div>
+                    <ViewAProduct />
+                </div>
             </div>
 
             <Footer />
