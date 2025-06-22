@@ -1,8 +1,17 @@
+import OurStory from "../components/AboutUs/OurStory";
+import StatsOverview from "../components/AboutUs/StatsOverview";
+import TeamMembers from "../components/AboutUs/TeamMembers";
+import Footer from "../components/Footer";
+import Navbar from "../components/Navbar";
+
 export default function AboutUs() {
     return (
-
-            <div>
-                <h1>WELCOME TO ABOUTUS PAGE</h1>
-            </div>
+        <>
+            <Navbar />
+            <OurStory />
+            <StatsOverview />
+            <TeamMembers />
+            <Footer />
+        </>
     );
 }

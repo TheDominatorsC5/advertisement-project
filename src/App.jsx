@@ -5,7 +5,7 @@ import SignUp from "./pages/SignUp"
 import Cart from "./pages/Cart"
 import Checkout from "./pages/Checkout"
 import AboutUs from "./pages/AboutUs"
-import VendorsAccount from "./pages/VendorsAccount"
+import VendorsOnboarding from "./pages/VendorsOnboarding"
 import Contact from "./pages/Contact"
 import ViewProduct from "./pages/ViewProduct"
 import WoovenPieces from "./pages/WoovenPieces"
@@ -22,10 +22,10 @@ const adwumaCraftRouter = createBrowserRouter([
   { path: '/login', element: <Login /> },
   { path: '/cart', element: <Cart /> },
   { path: '/checkout', element: <Checkout /> },
-  { path: '/aboutus', element: <AboutUs /> },
-  { path: '/vendorsaccount', element: <VendorsAccount /> },
-  { path: '/contactpage', element: <Contact /> },
-  { path: '/viewproduct', element: <ViewProduct /> },
+  { path: '/about-us', element: <AboutUs /> },
+  { path: '/vendors/onboarding', element: <VendorsOnboarding /> },
+  { path: '/contact', element: <Contact /> },
+  { path: '/viewproduct/:id', element: <ViewProduct /> },
   { path: '/woovenpieces', element: <WoovenPieces /> },
   { path: '/pottery', element: <Pottery /> },
   { path: '/accessories', element: <Accessories /> },
