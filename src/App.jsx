@@ -14,6 +14,7 @@ import Accessories from "./pages/Accessories"
 import Textile from "./pages/Textile"
 import ArtAndPaintings from "./pages/ArtAndPaintings"
 import HomeDecor from "./pages/HomeDecor"
+import Otp from "./pages/Otp"
 import NotFound from "./pages/NotFound"
 
 const adwumaCraftRouter = createBrowserRouter([
@@ -32,6 +33,7 @@ const adwumaCraftRouter = createBrowserRouter([
   { path: '/textile', element: <Textile /> },
   { path: '/artandpaints', element: <ArtAndPaintings /> },
   { path: '/homedecor', element: <HomeDecor /> },
+  { path: '/otp', element: <Otp /> },
   { path: '*', element: <NotFound /> },
 ]);
 

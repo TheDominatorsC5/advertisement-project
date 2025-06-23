@@ -7,8 +7,8 @@ export default function Checkout() {
     return (
         <>
             <Navbar />
-            <div className="container md:flex justify-evenly items-end text-slate-500 gap-24">
-                <div className=" w-full md:w-[40%]">
+            <section className="container md:flex justify-evenly items-end text-slate-500 gap-24">
+                <div className=" w-full md:w-[45%]">
                     <p className="mb-2 md:my-6">
                         <a href="">Home</a>
                         <span className="mx-2">/</span>
@@ -74,10 +74,10 @@ export default function Checkout() {
                         <button className="rounded px-8 py-3 mt-8 text-sm font-bold bg-green-700 text-white hover:bg-[#29492f] transition duration-300">Place Order</button>
                     </div>
                 </div>
-            </div>
+            </section>
 
             <div classname="w-full mx-16">
-                <div>
+                <div className="mb-10">
                     <ProductCards />
                 </div>
                 <div>
