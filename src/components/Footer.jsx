@@ -3,8 +3,8 @@ import { Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
 export default function Footer() {
     return (
         <footer className="bg-black h-[50vh] w-full mt-20 text-white" >
-            <div className="flex flex-row justify-around px-6 pt-15 text-xs">
-                <div className="flex flex-col w-70">
+            <div className="flex flex-row justify-around w-[90%] mx-auto pt-15 text-xs">
+                <div className="flex flex-col w-80">
                     <h6 className="text-lg font-medium pb-2">ADWUMACraft</h6>
                     <p className="leading-5">
                         Is a community-driven eCommerce platform dedicated to showcasing and selling products from local brands, artisans, and small businesses. By offering an easy-to-use online storefront. It gives neighborhood creators broader vsibility and connects buyers directly with them.
@@ -47,7 +47,7 @@ export default function Footer() {
                     name="email" 
                     id="" 
                     placeholder="Enter your email"
-                    className="border bg-transparent w-40 p-1 mt-3" />
+                    className="border bg-transparent w-45 p-1 mt-3" />
                 </div>
 
             </div>

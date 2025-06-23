@@ -3,14 +3,10 @@ import { ShoppingCart, UserIcon } from "lucide-react";
 export default function Navbar() {
     return (
         <nav className="flex flex-col w-full">
-            <div className="bg-black h-full py- items-center">
-                <div className="text-zinc-300 flex flex-row justify-center items-center pt-3 text-sm">
+            <div className="bg-black h-full">
+                <div className="text-zinc-300 flex flex-row justify-center items-center p-3 text-sm">
                     <p>One Time Subscription - Get 20% OFF <span className="text-white font-semibold"> Shop Now!</span></p>
-                </div>
-
-
-                <div className="flex flex-row justify-end items-center pr-20 ">
-                    <select id="languageDropdown" onchange="changeLanguage()" className="border-gray-300 rounded-md text-sm text-zinc-300 focus:ring-blue-500 focus:border-blue-500">
+                    <select id="languageDropdown" onchange="changeLanguage()" className="border-gray-300 rounded-md text-sm text-zinc-300 focus:ring-blue-500 focus:border-blue-500 ml-20">
                         <option value="en">English</option>
                         <option value="es">Español</option>
                         <option value="fr">Français</option>
