@@ -1,46 +1,75 @@
-import { ShoppingCart, UserIcon } from "lucide-react";
+import { useState } from 'react';
+import { Link } from 'react-router';
+import { ShoppingCart, UserIcon, Menu, X } from 'lucide-react';
 
 export default function Navbar() {
-    return (
-        <nav className="flex flex-col w-full">
-            <div className="bg-black h-full">
-                <div className="text-zinc-300 flex flex-row justify-center items-center p-3 text-sm">
-                    <p>One Time Subscription - Get 20% OFF <span className="text-white font-semibold"> Shop Now!</span></p>
-                    <select id="languageDropdown" onchange="changeLanguage()" className="border-gray-300 rounded-md text-sm text-zinc-300 focus:ring-blue-500 focus:border-blue-500 ml-20">
-                        <option value="en">English</option>
-                        <option value="es">Español</option>
-                        <option value="fr">Français</option>
-                        <option value="de">Deutsch</option>
-                    </select>
-                </div>
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-            </div>
+  return (
+    <nav className="flex flex-col w-full">
+      {/* Top Banner */}
+      <div className="bg-black">
+        <div className="text-zinc-300 flex flex-col sm:flex-row justify-center items-center p-3 text-sm space-y-2 sm:space-y-0 sm:space-x-8">
+          <p className="text-center">
+            One Time Subscription - Get 20% OFF <span className="text-white font-semibold"> Shop Now!</span>
+          </p>
+          <select
+            id="languageDropdown"
+            className="border-gray-300 rounded-md text-sm text-zinc-300 focus:ring-blue-500 focus:border-blue-500"
+          >
+            <option value="en">English</option>
+            <option value="es">Español</option>
+            <option value="fr">Français</option>
+            <option value="de">Deutsch</option>
+          </select>
+        </div>
+      </div>
 
-            <div className="flex flex-row justify-between px-25 py-6 bg-white text-black">
-                <h1 className="font-bold text-xl">
-                    {/* Logo */}
-                    <a href="">
-                        <span className="font-medium">ADWUMA</span>
-                        <span className="text-[#D4AF37] font-extrabold">Craft</span>
-                    </a>
-                </h1>
+      {/* Main Navbar */}
+      <div className="flex flex-row justify-between items-center px-6 py-4 bg-white text-black">
+        {/* Logo */}
+        <h1 className="font-bold text-xl">
+          <Link to={"/"}>
+            <span className="font-medium">ADWUMA</span>
+            <span className="text-[#E6C744] font-extrabold">Craft</span>
+          </Link>
+        </h1>
 
-                {/* Decktop Menu */}
-                <div className="hidden md:flex space-x-8">
-                    <a href="#" className="hover:text-red-500">Home</a>
-                    {/* <a href="#about" className="hover:text-[#E6C744]">Category</a> */}
-                    <a href="#" className="hover:text-red-500">About</a>
-                    <a href="#" className="hover:text-red-500">Contact</a>
-                    <a href="#" className="hover:text-red-500">Sign Up</a>
-                </div>
+        {/* Desktop Menu */}
+        <div className="hidden md:flex space-x-8">
+          <Link to={"/"} className="hover:text-red-500">Home</Link>
+          <Link to={"/about-us"} className="hover:text-red-500">About</Link>
+          <Link to={"/contact"} className="hover:text-red-500">Contact</Link>
+          <Link to={"/signup"} className="hover:text-red-500">Sign Up</Link>
+        </div>
 
-                <div className="flex flex-row gap-3">
-                    <ShoppingCart className="hover:text-red-500" />
-                    <UserIcon className="hover:text-red-500" />
-                </div>
+        {/* Icons & Hamburger */}
+        <div className="flex items-center space-x-4 md:space-x-6">
+          <Link to={"/cart"}>
+            <ShoppingCart className="hover:text-red-500" />
+          </Link>
+          <Link to={"/login"}>
+            <UserIcon className="hover:text-red-500" />
+          </Link>
+          {/* Hamburger menu for mobile */}
+          <button
+            className="md:hidden focus:outline-none"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            {mobileMenuOpen ? <X /> : <Menu />}
+          </button>
+        </div>
+      </div>
 
-            </div>
-
-        </nav>
-    );
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <div className="md:hidden bg-white px-6 py-4 space-y-4 flex flex-col">
+          <Link to={"/"} className="hover:text-red-500">Home</Link>
+          <Link to={"/about-us"} className="hover:text-red-500">About</Link>
+          <Link to={"/contact"} className="hover:text-red-500">Contact</Link>
+          <Link to={"/signup"} className="hover:text-red-500">Sign Up</Link>
+        </div>
+      )}
+    </nav>
+  );
 }

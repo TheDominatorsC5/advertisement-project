@@ -14,13 +14,13 @@ export default function Home() {
             <HeroSlideshow />
 
             <div>
-                <div className="flex flex-col justify-between px-25 my-10">
-                    <h2 className="text-left text-3xl font-medium pt-4">Browse By Category</h2>
+                <div className="flex flex-col justify-center px-25 my-10">
+                    <h2 className="text-center text-3xl font-medium pt-4">Browse By Category</h2>
                     <CatIcons />
                 </div>
 
-                <div className="flex flex-col justify-between px-24 py-15 my-10 bg-[#C2CBDA]">
-                    <h3 className="text-left text-3xl font-medium">
+                <div className="flex flex-col justify-center px-24 py-15 my-10 bg-[#E6C744]">
+                    <h3 className="text-center text-3xl font-medium">
                         New Arrival
                     </h3>
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 p-6 gap-6 justify-around w-full mx-auto">
