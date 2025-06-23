@@ -32,7 +32,7 @@ export default function CatIcons() {
     const [highlight, setHighlight] = useState(null)
 
     return (
-        <section className="flex flex-wrap justify-center gap-12 px-8 py-20">
+        <section className="flex flex-wrap justify-center gap-8 px-8 py-20">
             {category.map((category, index) => (
                 <div
                     key={index}

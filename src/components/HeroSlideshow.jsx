@@ -44,7 +44,7 @@ export default function HeroSlideshow() {
                     <span className="font-extrabold">ADWUMACraft</span>
                 </h1>
                 <a href="#">
-                    <button className="rounded px-8 py-3 mt-16 text-sm font-bold bg-green-700 text-white hover:bg-[#29492f] transition duration-300 animate-bounce">
+                    <button className="rounded px-8 py-3 mt-16 text-sm font-bold bg-green-600 text-white hover:bg-[#335e3a] transition duration-300 animate-bounce">
                         SHOP NOW
                     </button>
                 </a>

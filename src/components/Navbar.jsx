@@ -25,22 +25,22 @@ export default function Navbar() {
                     {/* Logo */}
                     <a href="">
                         <span className="font-medium">ADWUMA</span>
-                        <span className="text-[#E6C744] font-extrabold">Craft</span>
+                        <span className="text-[#D4AF37] font-extrabold">Craft</span>
                     </a>
                 </h1>
 
                 {/* Decktop Menu */}
                 <div className="hidden md:flex space-x-8">
-                    <a href="#" className="hover:text-[#E6C744]">Home</a>
+                    <a href="#" className="hover:text-red-500">Home</a>
                     {/* <a href="#about" className="hover:text-[#E6C744]">Category</a> */}
-                    <a href="#" className="hover:text-[#E6C744]">About</a>
-                    <a href="#" className="hover:text-[#E6C744]">Contact</a>
-                    <a href="#" className="hover:text-[#E6C744]">Sign Up</a>
+                    <a href="#" className="hover:text-red-500">About</a>
+                    <a href="#" className="hover:text-red-500">Contact</a>
+                    <a href="#" className="hover:text-red-500">Sign Up</a>
                 </div>
 
                 <div className="flex flex-row gap-3">
-                    <ShoppingCart className="hover:text-[#E6C744]" />
-                    <UserIcon className="hover:text-[#E6C744]" />
+                    <ShoppingCart className="hover:text-red-500" />
+                    <UserIcon className="hover:text-red-500" />
                 </div>
 
             </div>
