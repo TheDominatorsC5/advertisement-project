@@ -26,7 +26,7 @@ export default function Navbar() {
       </div>
 
       {/* Main Navbar */}
-      <div className="flex flex-row justify-between items-center px-6 py-4 bg-white text-black">
+      <div className="flex flex-row justify-around items-center px-6 py-4 bg-white text-black">
         {/* Logo */}
         <h1 className="font-bold text-xl">
           <Link to={"/"}>

@@ -32,7 +32,7 @@ export default function Home() {
                     </Link>
                 </div>
 
-                <div className="flex flex-row justify-evenly items-center my-20">
+                <div className="flex flex-row justify-evenly items-center my-20 w-[86%] mx-auto">
                     <div className="flex flex-col items-center">
                         <Truck className="rounded-full bg-black stroke-white stroke-1 w-14 h-14 p-3 " />
                         <h4 className="font-bold mt-3">FREE AND FAST DELIVERY</h4>

@@ -3,7 +3,7 @@ import { Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
 export default function Footer() {
     return (
         <footer className="bg-black text-white mt-20">
-            <div className="w-[90%] mx-auto py-10">
+            <div className="w-[86%] mx-auto py-10">
                 {/* Grid Layout: Responsive Columns */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10 text-xs">
 
