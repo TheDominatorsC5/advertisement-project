@@ -11,7 +11,7 @@ export default function HomeProductCards() {
                 className="w-full h-64 sm:h-72 md:h-80 object-cover transition-transform duration-300 group-hover:scale-105"
             />
 
-            <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-90 transition-opacity duration-300 px-4 py-6">
+            <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-80 transition-opacity duration-300 px-4 py-6">
                 <h2 className="text-lg md:text-xl font-semibold text-white">Product Name</h2>
                 <p className="text-white text-xs md:text-sm mt-2">
                     A short description of the product goes here. Highlight features or benefits.

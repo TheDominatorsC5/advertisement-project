@@ -8,7 +8,7 @@ export default function CatIcons() {
         <section className="py-10 px-4 md:px-10">
             <div className="flex flex-wrap justify-center gap-6">
                 <Link to={"/artandpaintings"}>
-                    <button className="flex flex-col items-center p-4 px-6 rounded-lg shadow-md border hover:bg-red-500 hover:text-white w-36">
+                    <button className="flex flex-col items-center p-4 px-6 rounded-lg shadow-md border hover:bg-red-500 hover:text-white w-38">
                         <Palette className="mb-3 w-10 h-10" />
                         <p className="text-sm text-center">Arts & Paintings</p>
                     </button>
@@ -43,7 +43,7 @@ export default function CatIcons() {
                 </Link>
 
                 <Link to={"/woovenpieces"}>
-                    <button className="flex flex-col items-center p-4 px-6 rounded-lg shadow-md border hover:bg-red-500 hover:text-white w-36">
+                    <button className="flex flex-col items-center p-4 px-6 rounded-lg shadow-md border hover:bg-red-500 hover:text-white w-38">
                         <Barrel className="mb-3 w-10 h-10" />
                         <p className="text-sm text-center">Wooden Pieces</p>
                     </button>
