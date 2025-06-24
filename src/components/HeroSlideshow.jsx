@@ -25,11 +25,11 @@ export default function HeroSlideshow() {
     };
 
     return (
-        <div className="relative w-full h-screen overflow-hidden">
+        <div className="relative w-full h-screen overflow-hidden my-25">
             {heroImages.map((image, index) => (
                 <div
                     key={index}
-                    className={`absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000 ease-in-out bg-black bg-opacity-40 ${index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                    className={`absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000 ease-in-out bg-blue-300 bg-opacity-60 ${index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'
                         }`}
                     style={{ backgroundImage: `url(${image})` }}
                 >

@@ -6,14 +6,14 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <nav className="flex flex-col w-full">
+    <nav className="flex flex-col w-full fixed top-0 left-0 shadow-lg z-50">
       {/* Top Banner */}
       <div className="bg-black">
         <div className="text-zinc-300 flex flex-col sm:flex-row justify-center items-center p-3 text-sm space-y-2 sm:space-y-0 sm:space-x-8">
           <p className="text-center">
             One Time Subscription - Get 20% OFF <span className="text-white font-semibold"> Shop Now!</span>
           </p>
-          <select
+          {/* <select
             id="languageDropdown"
             className="border-gray-300 rounded-md text-sm text-zinc-300 focus:ring-blue-500 focus:border-blue-500"
           >
@@ -21,7 +21,7 @@ export default function Navbar() {
             <option value="es">Español</option>
             <option value="fr">Français</option>
             <option value="de">Deutsch</option>
-          </select>
+          </select> */}
         </div>
       </div>
 
@@ -40,7 +40,7 @@ export default function Navbar() {
           <Link to={"/"} className="hover:text-red-500">Home</Link>
           <Link to={"/about-us"} className="hover:text-red-500">About</Link>
           <Link to={"/contact"} className="hover:text-red-500">Contact</Link>
-          <Link to={"/signup"} className="hover:text-red-500">Sign Up</Link>
+          <Link to={"/signupuser"} className="hover:text-red-500">Sign Up</Link>
         </div>
 
         {/* Icons & Hamburger */}
