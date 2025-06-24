@@ -1,10 +1,29 @@
 // import loginPageImage from '../assets/Images/loginPage.jpg';
 // import SubmitButton from "../components/SubmitButton"
-import React from 'react';
 import RotatingHeadings from '../components/RotatingHeadings';
 import { Link } from 'react-router';
+import SubmitButton from '../components/SubmitButton';
+import { apiClient } from '../api/client';
+import { useNavigate } from 'react-router';
 
 export default function Login() {
+
+    const navigate = useNavigate();
+
+    const loginUser = async (data) => {
+        try {
+            const response = await apiClient.post("/signin", data, {
+                headers: {
+                    "Content-Type": "application/json",
+                }
+            });
+            console.log(response);
+            navigate("/");
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return (
         <>
             {/* <div className="">
@@ -22,25 +41,29 @@ export default function Login() {
                     <div className="flex flex-col-reverse md:flex-row items-center gap-8">
                         <div className="w-96 bg-white backdrop-blur-md border border-white/90 rounded-xl shadow-lg p-8">
                             <h1></h1>
-                            <form action="">
-                                <label htmlFor="email" class="block font-medium mb-1">Email</label>
+                            <form action={loginUser}>
+                                <label htmlFor="" class="block font-medium mb-1">Email</label>
                                 <input
                                     type="email"
-                                    name=""
+                                    name="email"
                                     id=""
                                     class="mt-1 block w-full px-3 py-2 border border-gray-500 rounded-md shadow-sm focus:outline-none focus:ring-[#29492f] focus:border-green-700 sm:text-sm"
                                     placeholder="e.g., yawkesse369@gmail.com"
                                 />
-                                <label htmlFor="userName" class="block font-medium mb-1">Password</label>
+                                <label htmlFor="" class="block font-medium mb-1">Password</label>
                                 <input
                                     type="password"
-                                    name=""
+                                    name="password"
                                     id=""
                                     class="mt-1 block w-full px-3 py-2 border border-gray-500 rounded-md shadow-sm focus:outline-none focus:ring-[#29492f] focus:border-green-700 sm:text-sm"
                                     placeholder="**********"
                                 />
                                 <div className="flex justify-between my-4">
-                                    <button className="bg-green-700 text-white hover:bg-[#29492f] transition duration-300 block px-8 py-2 border rounded-md font-semibold"><a href="">Login</a></button>
+
+                                    <SubmitButton
+                                        className="bg-green-700 text-white hover:bg-[#29492f] transition duration-300 block px-8 py-2 border rounded-md font-semibold"
+                                        title={"Login"} />
+                                    
                                     <button className='text-green-700 hover:text-[#29492f]'><a href="">Forgot Password?</a></button>
                                 </div>
                                 <div className="flex items-center">
