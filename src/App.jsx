@@ -1,7 +1,8 @@
 import { createBrowserRouter,RouterProvider } from "react-router"
 import Home from "./pages/Home"
 import Login from "./pages/Login"
-import SignUp from "./pages/SignUp"
+import SignUpUser from "./pages/SignUpUser"
+import SignUpVendor from "./pages/SignUpVendor"
 import Cart from "./pages/Cart"
 import Checkout from "./pages/Checkout"
 import AboutUs from "./pages/AboutUs"
@@ -21,7 +22,8 @@ import VendorProducts from "./pages/Vendor/VendorProducts"
 
 const adwumaCraftRouter = createBrowserRouter([
   { path: '/', element: <Home /> },
-  { path: '/signup', element: <SignUp /> },
+  { path: '/signupuser', element: <SignUpUser /> },
+  { path: '/signupvendor', element: <SignUpVendor /> },
   { path: '/login', element: <Login /> },
   { path: '/cart', element: <Cart /> },
   { path: '/checkout', element: <Checkout /> },
