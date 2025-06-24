@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router';
 
 const heroImages = [
     'https://mawuafrica.com/cdn/shop/files/Banner_page_1_9771515c-6f40-44d0-b885-c793f1acbc04.png?v=1676626414&width=3840',
@@ -43,11 +44,11 @@ export default function HeroSlideshow() {
                     <br />
                     <span className="font-extrabold">ADWUMACraft</span>
                 </h1>
-                <a href="#">
-                    <button className="rounded px-8 py-3 mt-16 text-sm font-bold bg-green-700 text-white hover:bg-[#29492f] transition duration-300 animate-bounce">
-                        SHOP NOW
+                <Link to="/login">
+                    <button className="rounded px-12 py-3 mt-16 text-sm font-bold bg-red-500 text-white hover:bg-red-800 transition duration-300 animate-bounce">
+                        GET STARTED
                     </button>
-                </a>
+                </Link>
             </div>
 
             {/* Pagination Dots */}

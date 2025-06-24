@@ -19,7 +19,9 @@ export default function VendorsOnboardingPage() {
 
   const handleSubmit = () => {
     console.log('Submitted data:', formData);
-    navigate('/'); // Redirect to home page after submission
+    // localStorage.setItem('vendorData', JSON.stringify(formData));
+    const vendorId = Math.floor(Math.random() * 1000); // Simulate vendor ID generation
+    navigate(`/vendors/${vendorId}/products`); // Redirect to home page after submission
     // TODO: send data to backend or handle accordingly
   };
 

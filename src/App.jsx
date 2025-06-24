@@ -8,7 +8,7 @@ import Checkout from "./pages/Checkout"
 import AboutUs from "./pages/AboutUs"
 import VendorsOnboarding from "./pages/VendorsOnboarding"
 import Contact from "./pages/Contact"
-import ViewProduct from "./pages/ViewProduct"
+import ViewProduct from "./pages/VendorViewProduct"
 import WoovenPieces from "./pages/WoovenPieces"
 import Pottery from "./pages/Pottery"
 import Accessories from "./pages/Accessories"
@@ -17,6 +17,8 @@ import ArtAndPaintings from "./pages/ArtAndPaintings"
 import HomeDecor from "./pages/HomeDecor"
 import Otp from "./pages/Otp"
 import NotFound from "./pages/NotFound"
+import ProductCategoryType from "./pages/ProductCategoryType"
+import VendorProducts from "./pages/VendorProducts"
 
 const adwumaCraftRouter = createBrowserRouter([
   { path: '/', element: <Home /> },
@@ -28,7 +30,9 @@ const adwumaCraftRouter = createBrowserRouter([
   { path: '/about-us', element: <AboutUs /> },
   { path: '/vendors/onboarding', element: <VendorsOnboarding /> },
   { path: '/contact', element: <Contact /> },
+  { path: '/vendors/:vendorId/products', element: <VendorProducts /> },
   { path: '/viewproduct/:id', element: <ViewProduct /> },
+  { path: '/products/categories/:type', element: <ProductCategoryType /> },
   { path: '/woovenpieces', element: <WoovenPieces /> },
   { path: '/pottery', element: <Pottery /> },
   { path: '/accessories', element: <Accessories /> },
