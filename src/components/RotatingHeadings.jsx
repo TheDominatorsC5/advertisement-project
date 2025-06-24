@@ -18,7 +18,7 @@ export default function RotatingHeadings() {
     }, [headings.length]); // Dependency array: re-run effect if headings array length changes
 
     return (
-        <div className='leading-none mb-4'>
+        <div className='leading-none mb-4 align-middle'>
             <div className="relative text-white font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl h-[100px] overflow-hidden">
                 {/*
                     Render both H1 elements.

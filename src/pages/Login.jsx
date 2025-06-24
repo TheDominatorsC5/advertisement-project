@@ -2,6 +2,7 @@
 // import SubmitButton from "../components/SubmitButton"
 import React from 'react';
 import RotatingHeadings from '../components/RotatingHeadings';
+import { Link } from 'react-router';
 
 export default function Login() {
     return (
@@ -19,7 +20,7 @@ export default function Login() {
 
                 <div className='relative z-10'>
                     <div className="flex flex-col-reverse md:flex-row items-center gap-8">
-                        <div className="w-96 bg-white/80 backdrop-blur-md border border-white/90 rounded-xl shadow-lg p-8">
+                        <div className="w-96 bg-white backdrop-blur-md border border-white/90 rounded-xl shadow-lg p-8">
                             <h1></h1>
                             <form action="">
                                 <label htmlFor="email" class="block font-medium mb-1">Email</label>
@@ -47,10 +48,10 @@ export default function Login() {
                                     <span className="mx-2 font-semibold">Don't have an account?</span>
                                     <div className="flex-grow border-t border-gray-500"></div>
                                 </div>
-                                <a href="" className="flex justify-center border-white/10 text-green-700 hover:text-[#29492f] font-semibold mt-2">Sign Up</a>
+                                <Link to={"/signupuser"} className="flex justify-center border-white/10 text-green-700 hover:text-[#29492f] font-semibold mt-2">Sign Up</Link>
                             </form>
                         </div>
-                        <div className='w-98'>
+                        <div className='w-full md:w-98'>
                             <RotatingHeadings />
                         </div>
                     </div>

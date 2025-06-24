@@ -1,8 +1,21 @@
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import ViewAProduct from "../components/ViewAProduct";
+
 export default function ViewProduct() {
     return (
 
             <div>
-                <h1>WELCOME TO VIEW PRODUCT PAGE</h1>
+                <Navbar />
+                
+                <section className="h-screen md:flex justify-between items-end text-slate-700 bg-yellow-200 p-8">
+                
+                    <div className="">
+                        <ViewAProduct />
+                    </div>
+                </section>
+
+                <Footer />
             </div>
     );
 }
