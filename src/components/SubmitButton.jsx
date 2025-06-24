@@ -1,7 +1,7 @@
 import { useFormStatus } from "react-dom";
 
 
-export default function SubmitButton({ title, className }) {
+export default function SubmitButton({ title, className, onclick }) {
     const { pending } = useFormStatus();
 
 
@@ -10,6 +10,7 @@ export default function SubmitButton({ title, className }) {
             type="submit"
             className={`${className} ${pending && "animate-pulse"}`}
             disabled={pending}
+            onClick={onclick}
         >
             {pending ? "loading..." : title}
         </button>

@@ -5,10 +5,13 @@ import { Link } from 'react-router';
 import SubmitButton from '../components/SubmitButton';
 import { apiClient } from '../api/client';
 import { useNavigate } from 'react-router';
+import { useState } from 'react';
 
 export default function Login() {
 
     const navigate = useNavigate();
+
+    const [isValidCredentials, setValidCredentials] = useState(true)
 
     const loginUser = async (data) => {
         try {
@@ -17,10 +20,16 @@ export default function Login() {
                     "Content-Type": "application/json",
                 }
             });
-            console.log(response);
-            navigate("/");
+            
+            if (response.data.success) {
+                navigate("/");
+                setValidCredentials(true);
+            } else {
+                setValidCredentials(false);
+            }
+            
         } catch (error) {
-            console.log(error);
+            setValidCredentials(false);
         }
     }
 
@@ -58,6 +67,14 @@ export default function Login() {
                                     class="mt-1 block w-full px-3 py-2 border border-gray-500 rounded-md shadow-sm focus:outline-none focus:ring-[#29492f] focus:border-green-700 sm:text-sm"
                                     placeholder="**********"
                                 />
+                                <div style={{display: !isValidCredentials ? 'flex' : 'none'}} className='mt-[5px]'>
+                                    <p style={{
+                                        fontSize: '14px',
+                                        fontStyle: 'italic',
+                                        color: 'maroon',
+                                        letterSpacing: '2px'
+                                    }} className='italics'>invalid credentials</p>
+                                </div>
                                 <div className="flex justify-between my-4">
 
                                     <SubmitButton
