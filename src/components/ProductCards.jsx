@@ -1,23 +1,31 @@
 import { Star } from "lucide-react";
+import { Link } from "react-router";
 
 export default function ProductCards() {
 
     return (
-        <div class="max-w-sm rounded-t overflow-hidden shadow-lg bg-white hover:shadow-xl transition-shadow duration-300 mt-40 w-full sm:w-[500px] h-[400px] flex flex-col rounded-b-2xl">
-            <div>
-                <img class="w-full h-60 object-center" src="https://i.pinimg.com/736x/4c/7b/59/4c7b59d6c9049e8699f2b6a500c6ad49.jpg" alt="Product Image" />
-            </div>
+        <div
+            className="group relative max-w-sm rounded overflow-hidden shadow-lg bg-white 
+            hover:shadow-xl mt-10 w-full mx-auto">
+            <img
+                src="https://image.made-in-china.com/202f0j00kAJiEaTKZnpH/Hot-Sales-Handmade-Woven-Handbag-2PCS-Set-Women-Straw-Shoulder-Bag-Summer-Beach-Large-Neoprene-Tote-Bag-for-Ladies-Bags.webp"
+                alt="Product Image"
+                className="w-full h-64 sm:h-72 md:h-80 object-cover transition-transform duration-300 group-hover:scale-105" />
 
-            <div class="p-8 flex flex-col justify-between flex-grow">
-                <h2 class="text-l font-semibold text-gray-800">The "Mona Lisa"</h2>
-                <div class="flex items-center justify-between mt-4">
-                    <span class="text-lg font-bold text-green-600">$29.99</span>
-                    <button class="bg-yellow-600 text-white px-2 py-1 rounded hover:bg-amber-400 transition-colors">Buy Now</button>
+            <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-80 transition-opacity duration-300 px-4 py-6">
+                    <h2 className="text-lg md:text-xl font-semibold text-white">Product Name</h2>
+                    <p class="text-white text-xm md:text-sm mt-2">A short description of the product goes here. Highlight features or benefits.</p>
+                    <div className="flex items-center justify-between mt-4">
+                        <span class="text-sm md:text-lg font-bold text-green-400">Ghc49.99</span>
+
+                        <Link to="/viewproduct/:id">
+                            <button className="bg-green-600 text-white text-xs md:text-sm px-3 md:px-4  py-1.5 md:py-2 rounded hover:bg-[#356137] transition-colors">Shop Now</button>
+
+                        </Link>
+                    </div>
                 </div>
+
             </div>
-        </div>
-
-
 
     );
 }
