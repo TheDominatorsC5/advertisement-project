@@ -20,7 +20,7 @@ const CreateModal = ({ setIsOpen, product, resetProduct }) => {
         setIsOpen(false); // Close modal after submission (add actual logic here)
     };
 
-    const category = ['Arts & Paintings', 'Accessories', 'Home Deco', 'Pottery', 'Textiles', 'Wooden Pieces'];
+    const category = ['Arts & Paintings', 'Accessories', 'Home Decor', 'Pottery', 'Textiles', 'Wooden Pieces'];
 
     return (
         <div
@@ -48,8 +48,10 @@ const CreateModal = ({ setIsOpen, product, resetProduct }) => {
                     <div>
                         <label className="block text-sm font-medium text-white">Product Image</label>
                         <input
-                            type="text"
+                            type="file"
                             name="image"
+                            multiple
+                            accept="image/*"
                             value={formData.image}
                             onChange={handleChange}
                             className="mt-1 w-full p-2 border border-gray-400 h-14 rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gold-500"
@@ -105,6 +107,17 @@ const CreateModal = ({ setIsOpen, product, resetProduct }) => {
                             placeholder="Enter price"
                         />
                     </div>
+                    <div>
+                        <label className="block text-sm font-medium text-white">Price</label>
+                        <input
+                            type="text"
+                            name="quantity"
+                            value={formData.quantity}
+                            onChange={handleChange}
+                            className="mt-1 w-full p-2 border border-gray-400 h-14 rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gold-500"
+                            placeholder="Enter price"
+                        />
+                    </div>
                 </form>
 
                 {/* Modal Footer */}
@@ -114,7 +127,7 @@ const CreateModal = ({ setIsOpen, product, resetProduct }) => {
                             setIsOpen(false)
                             resetProduct(null);
                         }}
-                        className="text-white bg-red-500 font-semibold py-2 px-4 rounded-lg hover:bg-gold-600 transition"
+                        className="cursor-pointer text-white bg-red-500 font-semibold py-2 px-4 rounded-lg hover:bg-gold-600 transition"
                     >
                         Cancel
                     </button>
@@ -124,14 +137,11 @@ const CreateModal = ({ setIsOpen, product, resetProduct }) => {
                             handleSubmit()
                             resetProduct(null);
                         }}
-                        className="text-white bg-emerald-600 font-semibold py-2 px-4 rounded-lg hover:bg-gold-600 transition"
+                        className="cursor-pointer text-white bg-emerald-600 font-semibold py-2 px-4 rounded-lg hover:bg-gold-600 transition"
                     >
                         {product ? "Update" : "Create"}
                     </button>
                 </div>
-
-                {/* Decorative Element */}
-                <div className="absolute top-0 left-0 w-16 h-16 bg-gold-500 transform -translate-y-8 -translate-x-4 rotate-45"></div>
             </div>
         </div>
     );

@@ -1,4 +1,34 @@
+import { useRef, useState } from "react";
+
 export default function Otp() {
+
+    const [otp, setOtp] = useState(new Array(6).fill(""));
+    const inputRefs = useRef([]);
+
+    const handleChange = (e, index) => {
+        const value = e.target.value.replace(/[^0-9]/g, "");
+        if (!value) return;
+
+        const newOtp = [...otp];
+        newOtp[index] = value;
+        setOtp(newOtp);
+
+        if (index < 5) {
+            inputRefs.current[index + 1]?.focus();
+        }
+    };
+
+    const handleKeyDown = (e, index) => {
+        if (e.key === "Backspace") {
+            if (otp[index]) {
+                const newOtp = [...otp];
+                newOtp[index] = "";
+                setOtp(newOtp);
+            } else if (index > 0) {
+                inputRefs.current[index - 1]?.focus();
+            }
+        }
+    };
 
     return (
         <>
@@ -9,16 +39,18 @@ export default function Otp() {
                         <p className="text-gray-600 text-center mb-6">Enter the 6-digit code sent to your email</p>
 
                         <form className="flex justify-center gap-2 mb-6">
-                            {Array(6)
-                                .fill("")
-                                .map((_, index) => (
-                                    <input
-                                        key={index}
-                                        type="text"
-                                        maxLength="1"
-                                        className="w-12 h-12 text-center border border-gray-300 rounded-md text-lg focus:outline-none focus:ring-2 focus:ring-green-600"
-                                    />
-                                ))}
+                            {otp.map((digit, index) => (
+                                <input
+                                    key={index}
+                                    ref={(el) => (inputRefs.current[index] = el)}
+                                    type="text"
+                                    maxLength="1"
+                                    value={digit}
+                                    onChange={(e) => handleChange(e, index)}
+                                    onKeyDown={(e) => handleKeyDown(e, index)}
+                                    className="w-12 h-12 text-center border border-gray-300 rounded-md text-lg focus:outline-none focus:ring-2 focus:ring-green-600"
+                                />
+                            ))}
                         </form>
 
                         <button className="w-full bg-green-600 text-white py-2 rounded-md hover:bg-green-700 transition duration-300 font-semibold">
