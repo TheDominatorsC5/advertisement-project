@@ -23,7 +23,6 @@ export default function Sidebar() {
 }
 
 function SidebarLink({ icon, text, href, danger = false }) {
-  console.log(href)
   return (
     <Link
       to={href || "#"}
