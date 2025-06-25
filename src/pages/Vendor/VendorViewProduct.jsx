@@ -3,26 +3,28 @@ import { useState } from 'react';
 import { createPortal } from 'react-dom';
 import CreateModal from '../../components/Vendor/CreateModal';
 import Sidebar from '../../components/Vendor/VendorSidebar';
+import { useLocation } from 'react-router';
 
 export default function VendorProductView() {
-    const product = {
-        id: 1,
-        name: "Handwoven Basket",
-        category: "Home Decor",
-        price: "₵120",
-        images: [
-            "https://www.dropicts.com/wp-content/uploads/Dropicts-Feautred-Images-Beauty-Product-02.jpg",
-            "https://www.dropicts.com/wp-content/uploads/Dropicts-Feautred-Images-Beauty-Product-02.jpg",
-            "https://www.dropicts.com/wp-content/uploads/Dropicts-Feautred-Images-Beauty-Product-02.jpg",
-        ],
-        description:
-            "This handwoven basket is crafted by local artisans using traditional methods and eco-friendly materials. Perfect for décor or storage.",
-        quantity: 30,
-        dateAdded: "June 20, 2025",
-    };
+    // const product = {
+    //     id: 1,
+    //     name: "Handwoven Basket",
+    //     category: "Home Decor",
+    //     price: "₵120",
+    //     images: [
+    //         "https://www.dropicts.com/wp-content/uploads/Dropicts-Feautred-Images-Beauty-Product-02.jpg",
+    //         "https://www.dropicts.com/wp-content/uploads/Dropicts-Feautred-Images-Beauty-Product-02.jpg",
+    //         "https://www.dropicts.com/wp-content/uploads/Dropicts-Feautred-Images-Beauty-Product-02.jpg",
+    //     ],
+    //     description:
+    //         "This handwoven basket is crafted by local artisans using traditional methods and eco-friendly materials. Perfect for décor or storage.",
+    //     quantity: 30,
+    //     dateAdded: "June 20, 2025",
+    // };
 
+    const product = useLocation().state;
     const [isOpen, setIsOpen] = useState(false);
-    const [mainImage, setMainImage] = useState(product.images[0]);
+    const [mainImage, setMainImage] = useState(product.images[0].url);
 
     const handleDelete = (id) => {
         // Logic to delete the product
@@ -55,10 +57,10 @@ export default function VendorProductView() {
                         {product.images.map((img, index) => (
                             <img
                                 key={index}
-                                src={img}
-                                onClick={() => setMainImage(img)}
+                                src={img.url}
+                                onClick={() => setMainImage(img.url)}
                                 alt={`Thumbnail ${index + 1}`}
-                                className={`w-20 h-20 object-cover rounded-md cursor-pointer border-2 ${mainImage === img ? "border-emerald-600" : "border-transparent"
+                                className={`w-20 h-20 object-cover rounded-md cursor-pointer border-2 ${mainImage === img.url ? "border-emerald-600" : "border-transparent"
                                     } hover:border-gold-600 transition`}
                             />
                         ))}

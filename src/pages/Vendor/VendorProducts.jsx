@@ -117,7 +117,7 @@ function VendorProducts() {
                                     <td className="py-3 px-4 w-60">{product.description}</td>
                                     <td className="py-3 px-4">{product.quantity}</td>
                                     <td className="py-3 px-4 flex gap-2">
-                                        <Link to={`/vendors/products/${product.id}`} className="text-emerald-600 cursor-pointer p-2 rounded hover:bg-emerald-700 transition">
+                                        <Link to={`/vendors/products/${product.id}`} state={product} className="text-emerald-600 cursor-pointer p-2 rounded hover:bg-emerald-700 transition">
                                             <EyeIcon className="w-5 h-5 inline-block" />
                                         </Link>
 
