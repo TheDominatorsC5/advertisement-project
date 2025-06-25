@@ -20,7 +20,7 @@ export default function HomeProductCards() {
                 <div className="flex items-center justify-between mt-4">
                     <span className="text-sm md:text-lg font-bold text-green-400">Ghc49.99</span>
 
-                    <Link to="/vendors/products/categories/:type">
+                    <Link to="/artandpaintings">
                         <button className="bg-green-600 text-white text-xs md:text-sm px-3 md:px-4 py-1.5 md:py-2 rounded hover:bg-[#356137] transition-colors">
                             Shop Now
                         </button>

@@ -27,7 +27,7 @@ export default function Home() {
                         {[1, 2, 3, 4, 5, 6].map(n => <HomeProductCards key={n} />)}
                     </div>
 
-                    <Link to="/accessories" className="flex justify-center my-20">
+                    <Link to="/viewallproduct" className="flex justify-center my-20">
                         <button className="bg-red-500 hover:bg-red-800 text-white px-8 py-2 rounded transition-colors">View All Products</button>
                     </Link>
                 </div>
