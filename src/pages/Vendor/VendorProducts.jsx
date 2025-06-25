@@ -49,21 +49,19 @@ const products = [
 ];
 
 function VendorProducts() {
-    const vendorId = 1;
+    // const vendorId = 1;
     const navigate = useNavigate()
-    const { data, isLoading, error } = useSWR(`/products/vendor/${vendorId}`, apiFetcher);
+    const { data, isLoading, error } = useSWR(`/products/vendor`, apiFetcher);
 
     const [isOpen, setIsOpen] = useState(false);
     const [productToEdit, setProductToEdit] = useState(null)
 
     const handleDelete = async (id) => {
-        // Logic to delete the product
         const shouldDelete = window.confirm("Are you sure you want to delete this product?");
         if (!shouldDelete) return;
         try {
             const response = await apiClient.delete(`/products/${id}`);
             console.log(response.data)
-            setIsOpen(false); // Close modal after submission (add actual logic here)
         } catch (error) {
             console.error("Error submitting form:", error);
         }
@@ -73,7 +71,7 @@ function VendorProducts() {
     const handleEdit = (id) => {
         // Logic to edit the product
         console.log(`Edit product with id: ${id}`);
-        const product = products.find(product => product.id === id);
+        const product = data[id];
         setProductToEdit(product);
         setIsOpen(true);
 
@@ -103,13 +101,13 @@ function VendorProducts() {
                             </tr>
                         </thead>
                         <tbody>
-                            {products.map((product, index) => (
+                            {!data ? "" : (data.map((product, index) => (
                                 <tr key={index} className="even:bg-gray-100 odd:bg-gray-50 hover:bg-gray-200 transition-colors">
-                                    <td className="py-3 px-4">{product.name}</td>
+                                    <td className="py-3 px-4">{product.productName}</td>
                                     <td className="py-3 px-4">
                                         <img
-                                            src={product.image}
-                                            alt={product.name}
+                                            src={product.images[0].url}
+                                            alt={'product image'}
                                             className="w-14 h-14 object-cover rounded-md"
                                         />
                                     </td>
@@ -121,7 +119,7 @@ function VendorProducts() {
                                             <EyeIcon className="w-5 h-5 inline-block" />
                                         </Link>
 
-                                        <button onClick={() => handleEdit(product.id)} className="text-emerald-600 cursor-pointer p-2 rounded hover:bg-emerald-700 transition">
+                                        <button onClick={() => handleEdit(index)} className="text-emerald-600 cursor-pointer p-2 rounded hover:bg-emerald-700 transition">
                                             <EditIcon className="w-5 h-5 inline-block" />
                                         </button>
 
@@ -130,7 +128,7 @@ function VendorProducts() {
                                         </button>
                                     </td>
                                 </tr>
-                            ))}
+                            )))}
                         </tbody>
                     </table>
                 </div>
