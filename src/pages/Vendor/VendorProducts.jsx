@@ -60,7 +60,11 @@ function VendorProducts() {
         const shouldDelete = window.confirm("Are you sure you want to delete this product?");
         if (!shouldDelete) return;
         try {
-            const response = await apiClient.delete(`/products/${id}`);
+            const response = await apiClient.delete(`/products/${id}`, null, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("ACCESS_TOKEN")}`,
+                }
+            });
             console.log(response.data)
         } catch (error) {
             console.error("Error submitting form:", error);

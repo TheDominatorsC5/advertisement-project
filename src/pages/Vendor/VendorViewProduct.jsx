@@ -48,7 +48,7 @@ export default function VendorProductView() {
                     <div className="h-72 w-full overflow-hidden">
                         <img
                             src={mainImage}
-                            alt={product.name}
+                            alt={product.productName}
                             className="w-full h-full object-cover transition-all duration-300"
                         />
                     </div>
@@ -67,9 +67,9 @@ export default function VendorProductView() {
                     </div>
 
                     <div className="px-6 pb-6">
-                        <h2 className="text-3xl font-bold text-emerald-800">{product.name}</h2>
+                        <h2 className="text-3xl font-bold text-emerald-800">{product.productName}</h2>
                         <p className="text-sm text-gray-500 mt-1">{product.category}</p>
-                        <p className="text-xl text-gold-700 font-semibold mt-4">{product.price}</p>
+                        <p className="text-xl text-gold-700 font-semibold mt-4">₵{product.price}.00</p>
 
                         <div className="mt-4 text-gray-700">
                             <h4 className="font-medium text-lg mb-1">Description:</h4>
@@ -78,7 +78,7 @@ export default function VendorProductView() {
 
                         <div className="mt-4 flex flex-col sm:flex-row gap-4 text-sm text-gray-600">
                             <p><span className="font-medium">Stock Status:</span> {product.quantity == 0 ? "Off Stock" : "In Stock"}</p>
-                            <p><span className="font-medium">Date Added:</span> {product.dateAdded}</p>
+                            <p><span className="font-medium">Date Added:</span> June 20, 2025</p>
                         </div>
 
                         <div className="mt-6 flex gap-4">
