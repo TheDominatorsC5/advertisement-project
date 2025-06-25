@@ -1,28 +1,25 @@
-import tomImage from '../../assets/images/tom.png';
-import emmaImage from '../../assets/images/emma.png';
+import gustine from '../../assets/images/gustine.png';
+import domatiara from '../../assets/images/domatiara.png';
 import chiamaka from '../../assets/images/chiamaka.png';
-import willimage from '../../assets/images/will.png';
+import yoda from '../../assets/images/yoda.png';
+
 const teamMembers = [
   {
-    name: 'Tom Cruise',
-    image: tomImage,
+    name: 'Gustine',
+    image: gustine,
   },
   {
     name: 'Domatiara',
-    image: emmaImage,
+    image: domatiara,
   },
   {
-    name: 'Will Smith',
-    image: willimage,
+    name: 'Yoda',
+    image: yoda,
   },
-   {
+  {
     name: 'Chiamaka Nnakwu',
     image: chiamaka,
-  },
-  {
-    name: 'Emma Watson',
-    image: willimage,
-  },
+  }
 ];
 
 export default function TeamMembers() {
