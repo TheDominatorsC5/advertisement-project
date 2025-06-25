@@ -30,7 +30,7 @@ const CreateModal = ({ setIsOpen, product, resetProduct }) => {
         }
     };
 
-    const category = ['Arts & Paintings', 'Accessories', 'Home Decor', 'Pottery', 'Textiles', 'Wooden Pieces'];
+    const category = ['Arts %26 Paintings', 'Accessories', 'Home Deco', 'Pottery', 'Textiles', 'Wooden Pieces'];
 
     return (
         <div
@@ -61,7 +61,7 @@ const CreateModal = ({ setIsOpen, product, resetProduct }) => {
                             <label className="block mb-1 text-sm font-medium">Product Image</label>
                             <input
                                 type="file"
-                                name="images"
+                                name="image"
                                 id="images"
                                 multiple
                                 accept="image/*"

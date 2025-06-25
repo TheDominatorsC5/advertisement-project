@@ -1,9 +1,19 @@
 import { useState } from 'react';
 import { Link } from 'react-router';
 import { ShoppingCart, UserIcon, Menu, X } from 'lucide-react';
+import { useEffect } from 'react';
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const [username, setUserName] = useState()
+  useEffect(() => {
+    let username = localStorage.getItem("username")
+    if (!username) {
+      username = ""
+    }
+    setUserName(username)
+  }, [])
 
   return (
     <nav className="flex flex-col w-full fixed top-0 left-0 shadow-lg z-50">
@@ -22,6 +32,7 @@ export default function Navbar() {
             <option value="fr">Français</option>
             <option value="de">Deutsch</option>
           </select> */}
+          {/* GHC */}
         </div>
       </div>
 
@@ -48,9 +59,14 @@ export default function Navbar() {
           <Link to={"/cart"}>
             <ShoppingCart className="hover:text-red-500" />
           </Link>
-          <Link to={"/login"}>
+
+          <div className='flex items-center'>
+              <Link to={"/login"}>
             <UserIcon className="hover:text-red-500" />
           </Link>
+          <p className='font-bold text-red-500 text-lg uppercase'>{username}</p>
+          </div>
+          
           {/* Hamburger menu for mobile */}
           <button
             className="md:hidden focus:outline-none"
