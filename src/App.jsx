@@ -18,6 +18,7 @@ import NotFound from "./pages/NotFound"
 import VendorsProfile from "./pages/Vendor/VendorsProfile"
 import VendorViewProduct from "./pages/Vendor/VendorViewProduct"
 import ProductCategoryType from "./pages/Vendor/ProductCategoryType"
+import ViewProduct from "./pages/ViewProduct"
 import VendorProducts from "./pages/Vendor/VendorProducts"
 
 const adwumaCraftRouter = createBrowserRouter([
@@ -40,6 +41,7 @@ const adwumaCraftRouter = createBrowserRouter([
   { path: '/artandpaintings', element: <ArtAndPaintings /> },
   { path: '/homedecor', element: <HomeDecor /> },
   { path: '/otp', element: <Otp /> },
+  { path: '/viewproduct', element: <ViewProduct />},
   { path: '*', element: <NotFound /> },
 ]);
 

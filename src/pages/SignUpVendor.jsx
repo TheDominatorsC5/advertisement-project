@@ -4,9 +4,11 @@ import SubmitButton from '../components/SubmitButton';
 import { BriefcaseBusiness, UserCheck } from 'lucide-react';
 import { apiClient } from '../api/client';
 import { useNavigate } from 'react-router';
+import { useState } from "react"
 
 export default function SignUpVendor() {
     const navigate = useNavigate();
+    const [email, setEmail] = useState('')
 
     const signUpVendor = async (data) => {
         try {
@@ -15,8 +17,10 @@ export default function SignUpVendor() {
                     "Content-Type": "application/json",
                 }
             });
-            console.log(response);
-            navigate("/otp");
+            
+            navigate("/otp", {
+                state: { email: response.data.email }
+            });
         } catch (error) {
             console.log(error);
         }
