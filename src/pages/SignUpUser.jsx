@@ -1,9 +1,31 @@
-import React from 'react';
 import RotatingHeadings from '../components/RotatingHeadings';
 import { Link } from 'react-router';
+import SubmitButton from '../components/SubmitButton';
 import { BriefcaseBusiness, UserCheck } from 'lucide-react';
+import { apiClient } from '../api/client';
+import { useNavigate } from 'react-router';
+import { useState } from "react"
 
 export default function SignUpUser() {
+    const navigate = useNavigate();
+    const [email, setEmail] = useState('')
+
+    const signUpUser = async (data) => {
+        try {
+            const response = await apiClient.post("/signup", data, {
+                headers: {
+                    "Content-Type": "application/json",
+                }
+            });
+
+            navigate("/otp", {
+                state: { email: response.data.email }
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return (
         <>
             <section className="bg-[url(./assets/images/africanInspiredPatternSignupScreen.jpg)] rounded text-slate-800 flex items-center justify-center relative h-[100vh] bg-cover bg-center bg-no-repeat">
@@ -19,7 +41,7 @@ export default function SignUpUser() {
                         </div>
                         <div className="mx-4 md:w-98 bg-white backdrop-blur-md border border-white/90 rounded-xl shadow-lg p-8">
                             <h1></h1>
-                            <form action="">
+                            <form action={signUpUser}>
 
                                 <div className="w-full flex flex-row justify-around mb-2">
 
@@ -46,10 +68,10 @@ export default function SignUpUser() {
                                 <div className='flex gap-4'>
 
                                     <div>
-                                        <label htmlFor="userName" class="block font-medium">First Name</label>
+                                        <label class="block font-medium">First Name</label>
                                         <input
                                             type="text"
-                                            name=""
+                                            name="firstName"
                                             id=""
                                             class="block w-full px-3 py-1.5 border border-gray-500 rounded-md shadow-sm focus:outline-none focus:ring-[#29492f] focus:border-green-700 sm:text-sm"
                                             placeholder="e.g., Yaw"
@@ -57,10 +79,10 @@ export default function SignUpUser() {
                                     </div>
 
                                     <div>
-                                        <label htmlFor="userName" class="block font-medium">Last Name</label>
+                                        <label class="block font-medium">Last Name</label>
                                         <input
                                             type="text"
-                                            name=""
+                                            name="lastName"
                                             id=""
                                             class="block w-full px-3 py-1.5 border border-gray-500 rounded-md shadow-sm focus:outline-none focus:ring-[#29492f] focus:border-green-700 sm:text-sm"
                                             placeholder="e.g., Kesse"
@@ -68,34 +90,37 @@ export default function SignUpUser() {
                                     </div>
                                 </div>
 
-                                <label htmlFor="email" class="block mt-1  font-medium">Email</label>
+                                <label class="block mt-1  font-medium">Email</label>
                                 <input
                                     type="email"
-                                    name=""
+                                    name="email"
                                     id=""
                                     class="block w-full px-3 py-1.5 border border-gray-500 rounded-md shadow-sm focus:outline-none focus:ring-[#29492f] focus:border-green-700 sm:text-sm"
                                     placeholder="e.g., yawkesse369@gmail.com"
                                 />
-                                
-                                <label htmlFor="userName" class="block mt-1  font-medium">Password</label>
+
+                                <label class="block mt-1  font-medium">Password</label>
                                 <input
                                     type="password"
-                                    name=""
-                                    id=""
-                                    class="block w-full px-3 py-1.5 border border-gray-500 rounded-md shadow-sm focus:outline-none focus:ring-[#29492f] focus:border-green-700 sm:text-sm"
-                                    placeholder="**********"
-                                />
-                                
-                                <label htmlFor="userName" class="block mt-1  font-medium">Confirm Password</label>
-                                <input
-                                    type="password"
-                                    name=""
+                                    name="password"
                                     id=""
                                     class="block w-full px-3 py-1.5 border border-gray-500 rounded-md shadow-sm focus:outline-none focus:ring-[#29492f] focus:border-green-700 sm:text-sm"
                                     placeholder="**********"
                                 />
 
-                                <button className="text-sm bg-green-700 text-white hover:bg-[#29492f] transition duration-300 w-full my-4 block py-2 border rounded-md font-semibold">Sign Up</button>
+                                <label class="block mt-1  font-medium">Confirm Password</label>
+                                <input
+                                    type="password"
+                                    name="confirmPassword"
+                                    id=""
+                                    class="block w-full px-3 py-1.5 border border-gray-500 rounded-md shadow-sm focus:outline-none focus:ring-[#29492f] focus:border-green-700 sm:text-sm"
+                                    placeholder="**********"
+                                />
+
+                                <SubmitButton
+                                    className="text-sm bg-green-700 text-white hover:bg-[#29492f] transition duration-300 w-full my-4 block py-2 border rounded-md font-semibold"
+                                    title={"Sign Up"} />
+
                                 <div className="flex items-center">
                                     <div className="flex-grow border-t border-gray-500"></div>
                                     <span className="mx-2 font-semibold">Already have an account?</span>

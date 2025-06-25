@@ -6,7 +6,7 @@ export default function Checkout() {
         <>
             <Navbar />
             
-            <section className="container md:flex justify-evenly items-end text-slate-500 gap-24">
+            <section className="container md:flex justify-evenly items-end text-slate-800 gap-24">
                 <div className=" w-full md:w-[45%]">
                     <p className="mb-2 md:my-6">
                         <a href="">Home</a>
@@ -65,11 +65,20 @@ export default function Checkout() {
                 <div className="mt-12">
                     <div></div>
                     <div className="w-80">
+                        <div className="flex justify-between">
                         <p>Subtotal:</p>
+                        <p className="font-bold">$10</p>
+                    </div>
+
                         <div className="flex-grow border-t border-gray-500"></div>
                         <p>Delivery:</p>
                         <div className="flex-grow border-t border-gray-500"></div>
+
+                        <div className="flex justify-between">
                         <p>Total:</p>
+                        <p className="font-bold">$10</p>
+                    </div>
+                        
                         <button className="rounded px-8 py-3 mt-8 text-sm font-bold bg-green-700 text-white hover:bg-[#29492f] transition duration-300">Place Order</button>
                     </div>
                 </div>
