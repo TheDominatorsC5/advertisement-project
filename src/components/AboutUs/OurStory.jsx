@@ -4,8 +4,7 @@ export default function OurStory() {
   return (
     <section className="bg-white py-16 pl-6 md:pl-20">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-        
-        {/* Text Content */}
+
         <div className='pr-6 md:pr-20'>
           <h2 className="text-4xl font-bold text-gold mb-6">Our Story</h2>
           <p className="text-gray-700 mb-4">
@@ -16,7 +15,6 @@ export default function OurStory() {
           </p>
         </div>
 
-        {/* Image Section */}
         <div className="flex justify-end">
           <img
             src={OurStoryImage}
