@@ -1,9 +1,45 @@
 // import loginPageImage from '../assets/Images/loginPage.jpg';
 // import SubmitButton from "../components/SubmitButton"
-import React from 'react';
 import RotatingHeadings from '../components/RotatingHeadings';
+import { Link } from 'react-router';
+import SubmitButton from '../components/SubmitButton';
+import { apiClient } from '../api/client';
+import { useNavigate } from 'react-router';
+import { useState } from 'react';
 
 export default function Login() {
+
+    const navigate = useNavigate();
+
+    const [isValidCredentials, setValidCredentials] = useState(true)
+
+    const loginUser = async (data) => {
+        try {
+            const response = await apiClient.post("/signin", data, {
+                headers: {
+                    "Content-Type": "application/json",
+                }
+            });
+            
+            if (response.data.success) {
+                localStorage.setItem("username", response.data.username)
+                navigate("/");
+                setValidCredentials(true);
+                // localStorage.setItem("ACCESS_TOKEN", response.data.token)
+                // if (response.data.user.role = "vendor") {
+                //     navigate("/vendors/products");
+                // } else {
+                //     navigate("/");
+                // }
+            } else {
+                setValidCredentials(false);
+            }
+            
+        } catch (error) {
+            setValidCredentials(false);
+        }
+    }
+
     return (
         <>
             {/* <div className="">
@@ -19,27 +55,39 @@ export default function Login() {
 
                 <div className='relative z-10'>
                     <div className="flex flex-col-reverse md:flex-row items-center gap-8">
-                        <div className="w-96 bg-white/80 backdrop-blur-md border border-white/90 rounded-xl shadow-lg p-8">
+                        <div className="w-96 bg-white backdrop-blur-md border border-white/90 rounded-xl shadow-lg p-8">
                             <h1></h1>
-                            <form action="">
-                                <label htmlFor="email" class="block font-medium mb-1">Email</label>
+                            <form action={loginUser}>
+                                <label htmlFor="" class="block font-medium mb-1">Email</label>
                                 <input
                                     type="email"
-                                    name=""
+                                    name="email"
                                     id=""
                                     class="mt-1 block w-full px-3 py-2 border border-gray-500 rounded-md shadow-sm focus:outline-none focus:ring-[#29492f] focus:border-green-700 sm:text-sm"
                                     placeholder="e.g., yawkesse369@gmail.com"
                                 />
-                                <label htmlFor="userName" class="block font-medium mb-1">Password</label>
+                                <label htmlFor="" class="block font-medium mb-1">Password</label>
                                 <input
                                     type="password"
-                                    name=""
+                                    name="password"
                                     id=""
                                     class="mt-1 block w-full px-3 py-2 border border-gray-500 rounded-md shadow-sm focus:outline-none focus:ring-[#29492f] focus:border-green-700 sm:text-sm"
                                     placeholder="**********"
                                 />
+                                <div style={{display: !isValidCredentials ? 'flex' : 'none'}} className='mt-[5px]'>
+                                    <p style={{
+                                        fontSize: '14px',
+                                        fontStyle: 'italic',
+                                        color: 'maroon',
+                                        letterSpacing: '2px'
+                                    }} className='italics'>invalid credentials</p>
+                                </div>
                                 <div className="flex justify-between my-4">
-                                    <button className="bg-green-700 text-white hover:bg-[#29492f] transition duration-300 block px-8 py-2 border rounded-md font-semibold"><a href="">Login</a></button>
+
+                                    <SubmitButton
+                                        className="bg-green-700 text-white hover:bg-[#29492f] transition duration-300 block px-8 py-2 border rounded-md font-semibold"
+                                        title={"Login"} />
+                                    
                                     <button className='text-green-700 hover:text-[#29492f]'><a href="">Forgot Password?</a></button>
                                 </div>
                                 <div className="flex items-center">
@@ -47,10 +95,10 @@ export default function Login() {
                                     <span className="mx-2 font-semibold">Don't have an account?</span>
                                     <div className="flex-grow border-t border-gray-500"></div>
                                 </div>
-                                <a href="" className="flex justify-center border-white/10 text-green-700 hover:text-[#29492f] font-semibold mt-2">Sign Up</a>
+                                <Link to={"/signupuser"} className="flex justify-center border-white/10 text-green-700 hover:text-[#29492f] font-semibold mt-2">Sign Up</Link>
                             </form>
                         </div>
-                        <div className='w-98'>
+                        <div className='w-full md:w-98'>
                             <RotatingHeadings />
                         </div>
                     </div>

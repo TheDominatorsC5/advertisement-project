@@ -14,14 +14,14 @@ export default function Home() {
             <HeroSlideshow />
 
             <div>
-                <div className="flex flex-col justify-between px-25 my-10">
-                    <h2 className="text-left text-3xl font-medium pt-4">Browse By Category</h2>
+                <div className="flex flex-col justify-center px-25 my-10">
+                    <h2 className="text-center text-3xl font-extrabold py-6">Browse <br />By Category</h2>
                     <CatIcons />
                 </div>
 
-                <div className="flex flex-col justify-between px-24 py-15 my-10 bg-[#C2CBDA]">
-                    <h3 className="text-left text-3xl font-medium">
-                        New Arrival
+                <div className="flex flex-col justify-center px-24 py-15 my-10 bg-[#E6C744]">
+                    <h3 className="text-center text-4xl font-extrabold">
+                        New <br />Arrival
                     </h3>
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 p-6 gap-6 justify-around w-full mx-auto">
                         {[1, 2, 3, 4, 5, 6].map(n => <HomeProductCards key={n} />)}
@@ -32,21 +32,21 @@ export default function Home() {
                     </Link>
                 </div>
 
-                <div className="flex flex-row justify-evenly items-center my-20">
+                <div className="flex flex-row justify-evenly items-center my-20 w-[86%] mx-auto">
                     <div className="flex flex-col items-center">
                         <Truck className="rounded-full bg-black stroke-white stroke-1 w-14 h-14 p-3 " />
-                        <h4 className="font-bold mt-3">FREE AND FAST DELIVERY</h4>
-                        <p className="text-xs">Free delivery for all orders above Ghc100</p>
+                        <h4 className="font-semibold mt-3">FREE AND FAST DELIVERY</h4>
+                        <p className="text-xs text-zinc-600">Free delivery for all orders above Ghc100</p>
                     </div>
                     <div className="flex flex-col items-center">
                         <LucideHeadset className="rounded-full bg-black stroke-white stroke-1 w-14 h-14 p-3 " />
-                        <h4 className="font-bold mt-3">24/7 CUSTOMER SERVICE</h4>
-                        <p className="text-xs">Friendly 24/7 customer support</p>
+                        <h4 className="font-semibold mt-3">24/7 CUSTOMER SERVICE</h4>
+                        <p className="text-xs text-zinc-600">Friendly 24/7 customer support</p>
                     </div>
                     <div className="flex flex-col items-center">
                         <ShieldPlus className="rounded-full bg-black stroke-white stroke-1 w-14 h-14 p-3 " />
-                        <h4 className="font-bold mt-3">MONEY BACK GUARANTEE</h4>
-                        <p className="text-xs">We refund money within 14 days</p>
+                        <h4 className="font-semibold mt-3">MONEY BACK GUARANTEE</h4>
+                        <p className="text-xs text-zinc-600">We refund money within 14 days</p>
                     </div>
                 </div>
 

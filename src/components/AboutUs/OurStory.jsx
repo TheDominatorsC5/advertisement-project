@@ -5,14 +5,17 @@ export default function OurStory() {
     <section className="bg-white py-16 pl-6 md:pl-20">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
 
-        <div className='pr-6 md:pr-20'>
+        {/* Text Content */}
+        <div className='pr-6 md:pr-15'>
           <h2 className="text-4xl font-bold text-gold mb-6">Our Story</h2>
-          <p className="text-gray-700 mb-4">
-            Launched in 2015, Exclusive is South Asia’s premier online shopping marketplace with an active presence in Bangladesh. Supported by a wide range of tailored marketing, data and service solutions, Exclusive has 10,500 sellers and 300 brands and serves 3 million customers across the region.
-          </p>
-          <p className="text-gray-700">
-            Exclusive has more than 1 million products to offer, growing at a very fast rate. Exclusive offers a diverse assortment in categories ranging from consumer.
-          </p>
+          <p className="text-black-700 mb-4">
+            While global markets and flashy brands dominate the spotlight, the beauty of local craftsmanship is fading into the background. The people who create with their hands, who weave stories into every thread, stroke, or clay mold... they’re not being heard. And yet, their creations hold culture, tradition, and authenticity that cannot be mass-produced          </p>
+          <p className="text-black-700">
+            This isn’t just a website.
+            It’s a movement of empowerment, creativity, and cultural pride.
+
+            When you support ADWUMA Craft, you’re not just buying a product,
+            You’re backing a story. You’re sustaining a craft. You’re uplifting a maker          </p>
         </div>
 
         <div className="flex justify-end">
