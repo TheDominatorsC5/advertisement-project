@@ -7,22 +7,6 @@ import { useLocation } from 'react-router';
 import { apiClient } from '../../api/client';
 
 export default function VendorProductView() {
-    // const product = {
-    //     id: 1,
-    //     name: "Handwoven Basket",
-    //     category: "Home Decor",
-    //     price: "₵120",
-    //     images: [
-    //         "https://www.dropicts.com/wp-content/uploads/Dropicts-Feautred-Images-Beauty-Product-02.jpg",
-    //         "https://www.dropicts.com/wp-content/uploads/Dropicts-Feautred-Images-Beauty-Product-02.jpg",
-    //         "https://www.dropicts.com/wp-content/uploads/Dropicts-Feautred-Images-Beauty-Product-02.jpg",
-    //     ],
-    //     description:
-    //         "This handwoven basket is crafted by local artisans using traditional methods and eco-friendly materials. Perfect for décor or storage.",
-    //     quantity: 30,
-    //     dateAdded: "June 20, 2025",
-    // };
-
     const product = useLocation().state;
     const [isOpen, setIsOpen] = useState(false);
     const [mainImage, setMainImage] = useState(product.images[0].url);
@@ -37,6 +21,7 @@ export default function VendorProductView() {
                 }
             });
             console.log(response.data)
+            window.location.reload()
         } catch (error) {
             console.error("Error submitting form:", error);
         }
