@@ -24,6 +24,12 @@ export default function Login() {
             if (response.data.success) {
                 navigate("/");
                 setValidCredentials(true);
+                // localStorage.setItem("ACCESS_TOKEN", response.data.token)
+                // if (response.data.user.role = "vendor") {
+                //     navigate("/vendors/products");
+                // } else {
+                //     navigate("/");
+                // }
             } else {
                 setValidCredentials(false);
             }

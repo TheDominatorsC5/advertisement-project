@@ -1,32 +1,33 @@
-import tomImage from '../../assets/images/tom.png';
-import emmaImage from '../../assets/images/emma.png';
-import willimage from '../../assets/images/will.png';
+import gustine from '../../assets/images/gustine.png';
+import domatiara from '../../assets/images/domatiara.png';
+import chiamaka from '../../assets/images/chiamaka.png';
+import yoda from '../../assets/images/yoda.png';
+
 const teamMembers = [
   {
-    name: 'Tom Cruise',
-    image: tomImage,
+    name: 'Gustine',
+    image: gustine,
   },
   {
     name: 'Domatiara',
-    image: emmaImage,
+    image: domatiara,
   },
   {
-    name: 'Will Smith',
-    image: willimage,
+    name: 'Yoda',
+    image: yoda,
   },
-   {
+  {
     name: 'Chiamaka Nnakwu',
-    image: emmaImage,
-  },
-  {
-    name: 'Emma Watson',
-    image: willimage,
-  },
+    image: chiamaka,
+  }
 ];
 
 export default function TeamMembers() {
   return (
     <section className="py-16 px-6 md:px-20 bg-white">
+      <div className='text-center text-3xl font-serif font-bold mb-15'>
+        <h1>MEET THE TEAM</h1>
+      </div>
       <div className="grid gap-10 md:grid-cols-3 justify-center items-center text-center">
         {teamMembers.map((member, index) => (
           <div key={index}>
