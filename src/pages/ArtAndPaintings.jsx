@@ -101,6 +101,10 @@ export default function ArtAndPaintings() {
                             </Link>
                         </li>
                         <li>
+                            <Link to="/pottery" ><button className="block w-full text-left hover:text-amber-500 transition font-medium">Pottery</button>
+                            </Link>
+                        </li>
+                        <li>
                             <Link to="/textile" className="block w-full text-left hover:text-amber-500 transition font-medium">
                                 Textiles
                             </Link>
@@ -109,10 +113,7 @@ export default function ArtAndPaintings() {
                             <Link to="/woovenpieces" ><button className="block w-full text-left hover:text-amber-500 transition font-medium">Wooden Pieces</button>
                             </Link>
                         </li>
-                        <li>
-                            <Link to="/pottery" ><button className="block w-full text-left hover:text-amber-500 transition font-medium">Pottery</button>
-                            </Link>
-                        </li>
+                        
                     </ul>
                 </aside>
 

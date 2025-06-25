@@ -9,10 +9,11 @@ import { apiFetcher } from '../api/client';
 import useSWR from 'swr';
 import { ClockLoader } from 'react-spinners';
 
-export default function WoovenPieces() {
+
+export default function ViewAllProduct() {
     const [searchTerm, setSearchTerm] = useState('');
 
-    const { data, isLoading, error } = useSWR("/products/search?category=Wooden Pieces", apiFetcher)
+    const { data, isLoading, error } = useSWR("/products", apiFetcher)
 
     if (isLoading) {
         return (
@@ -29,6 +30,8 @@ export default function WoovenPieces() {
             </div>
         );
     }
+
+
 
     const sampleProducts = [
         { id: 1, name: 'Wooden Kente Mask', price: 80, category: 'Wooden Pieces' },
@@ -117,8 +120,7 @@ export default function WoovenPieces() {
 
                 {/* Product Grid */}
                 <section className="lg:w-3/4 bg-white p-4 rounded-lg shadow-md">
-                    <h4 className="text-xl font-medium text-gray-900 text-center mb-6">
-                        WOODEN PIECES</h4>
+                    <h4 className="text-xl font-medium text-gray-900 text-center mb-6">VIEW ALL PRODUCTS</h4>
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                         {data?.products?.map(product => (
                             <ProductCards key={product.id} product={product} />
