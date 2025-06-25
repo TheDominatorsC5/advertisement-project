@@ -16,7 +16,7 @@ import HomeDecor from "./pages/HomeDecor"
 import Otp from "./pages/Otp"
 import NotFound from "./pages/NotFound"
 import VendorsProfile from "./pages/Vendor/VendorsProfile"
-import ViewProduct from "./pages/Vendor/VendorViewProduct"
+import VendorViewProduct from "./pages/Vendor/VendorViewProduct"
 import ProductCategoryType from "./pages/Vendor/ProductCategoryType"
 import VendorProducts from "./pages/Vendor/VendorProducts"
 
@@ -31,7 +31,7 @@ const adwumaCraftRouter = createBrowserRouter([
   { path: '/contact', element: <Contact /> },
   { path: '/vendors/profile', element: <VendorsProfile /> },
   { path: '/vendors/products', element: <VendorProducts /> },
-  { path: '/vendors/products/:id', element: <ViewProduct /> },
+  { path: '/vendors/products/:id', element: <VendorViewProduct /> },
   { path: '/vendors/products/categories/:type', element: <ProductCategoryType /> },
   { path: '/woovenpieces', element: <WoovenPieces /> },
   { path: '/pottery', element: <Pottery /> },
