@@ -16,7 +16,7 @@ export default function ViewAProduct() {
         apiClient.get(`/product/${id}`)
             .then((response) => {
                 console.log(response.data);
-                setProduct(response.data)
+                setProduct(response.data.product)
             })
             .catch((error) => {
                 console.log(error);
@@ -29,19 +29,21 @@ export default function ViewAProduct() {
         <>
             <section className="">
                 <div className="h-[15vh]"></div>
-                <div className='flex mb-8 font-semibold text-green-700'>
+                
+                <div onClick={() => navigate(-1)} className='flex mb-8 font-semibold text-green-700'>
                     <span><ChevronLeft /></span>
                     <p className=''>Back</p>
                 </div>
-                <div className="md:flex justify-around">
-                    <div className="border border-gray-500 md:w-[400px] h-100 md:h-[500px]">
+
+                <div className="md:flex justify-around ">
+                    <div className="border border-gray-400 md:w-[400px] h-100 md:h-[500px]">
                         <img
-                            src={product.images}
+                            src={product.images?.[0]?.url}
                             alt="Product image" />
                     </div>
 
                     <div className="md:w-1/2">
-                        <h1 className="text-3xl font-semibold mb-4">{product.productname}</h1>
+                        <h1 className="text-3xl font-semibold mb-4">{product.productName}</h1>
 
                         <p className="text-xl text-red-500 font-semibold mb-4">{product.price}</p>
 
