@@ -32,6 +32,15 @@ export default function Login() {
                 // } else {
                 //     navigate("/");
                 // }
+                localStorage.setItem("username", response.data.username)
+                localStorage.setItem("role", response.data.role)
+                localStorage.setItem("ACCESS_TOKEN", response.data.token)
+                setValidCredentials(true);
+                if (response.data.role = "vendor") {
+                    navigate("/vendors/products");
+                } else {
+                    navigate("/");
+                }
             } else {
                 setValidCredentials(false);
             }

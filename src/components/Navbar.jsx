@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router';
-import { ShoppingCart, UserIcon, Menu, X } from 'lucide-react';
+import { Store, UserIcon, Menu, X } from 'lucide-react';
 import { useEffect } from 'react';
 
 export default function Navbar() {
@@ -23,16 +23,6 @@ export default function Navbar() {
           <p className="text-center">
             One Time Subscription - Get 20% OFF <span className="text-white font-semibold"> Shop Now!</span>
           </p>
-          {/* <select
-            id="languageDropdown"
-            className="border-gray-300 rounded-md text-sm text-zinc-300 focus:ring-blue-500 focus:border-blue-500"
-          >
-            <option value="en">English</option>
-            <option value="es">Español</option>
-            <option value="fr">Français</option>
-            <option value="de">Deutsch</option>
-          </select> */}
-          {/* GHC */}
         </div>
       </div>
 
@@ -56,8 +46,8 @@ export default function Navbar() {
 
         {/* Icons & Hamburger */}
         <div className="flex items-center space-x-4 md:space-x-6">
-          <Link to={"/cart"}>
-            <ShoppingCart className="hover:text-red-500" />
+          <Link to={"/vendors/products"}>
+            <Store className="hover:text-red-500" />
           </Link>
 
           <div className='flex items-center'>

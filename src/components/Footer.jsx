@@ -60,7 +60,7 @@ export default function Footer() {
 
                 {/* Footer Bottom */}
                 <div className="mt-10 border-t border-gray-600 pt-4 text-xs text-gray-400 text-center">
-                    <p>&copy; 2025 All rights reserved | This template is made by Adwuma Craft</p>
+                    <p>&copy; 2025 All rights reserved | This template is made by The DominatorsC5</p>
                 </div>
             </div>
         </footer>
