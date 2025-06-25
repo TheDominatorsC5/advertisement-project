@@ -18,7 +18,6 @@ export default function OurStory() {
             You’re backing a story. You’re sustaining a craft. You’re uplifting a maker          </p>
         </div>
 
-        {/* Image Section */}
         <div className="flex justify-end">
           <img
             src={OurStoryImage}
