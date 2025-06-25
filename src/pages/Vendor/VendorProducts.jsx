@@ -8,72 +8,32 @@ import Sidebar from '../../components/Vendor/VendorSidebar';
 import { apiFetcher, apiClient } from "../../api/client";
 import useSWR from "swr";
 
-
-const products = [
-    {
-        id: 1,
-        name: 'Handcrafted Necklace',
-        image: 'https://www.dropicts.com/wp-content/uploads/Dropicts-Feautred-Images-Beauty-Product-02.jpg',
-        price: '$45.00',
-        category: "Arts & Paintings",
-        description: 'Unique handcrafted necklace made with local materials',
-        quantity: 12,
-    },
-    {
-        id: 2,
-        name: 'Traditional Pottery Vase',
-        image: 'https://www.dropicts.com/wp-content/uploads/Dropicts-Feautred-Images-Beauty-Product-02.jpg',
-        price: '$30.00',
-        category: "Pottery",
-        description: 'Beautifully crafted pottery vase for home decor',
-        quantity: 5,
-    },
-    {
-        id: 3,
-        name: 'African Wax Print Fabric',
-        image: 'https://www.dropicts.com/wp-content/uploads/Dropicts-Feautred-Images-Beauty-Product-02.jpg',
-        price: '$60.00',
-        category: "Textiles",
-        description: 'High-quality African wax print fabric for clothing and crafts',
-        quantity: 20,
-    },
-    {
-        id: 4,
-        name: 'Wooden Wall Art',
-        image: 'https://www.dropicts.com/wp-content/uploads/Dropicts-Feautred-Images-Beauty-Product-02.jpg',
-        price: '$85.00',
-        category: "Wooden Pieces",
-        description: 'Beautifully carved wooden wall art piece',
-        quantity: 3,
-    },
-];
-
 function VendorProducts() {
-    const vendorId = 1;
-    const navigate = useNavigate()
-    const { data, isLoading, error } = useSWR(`/products/vendor/${vendorId}`, apiFetcher);
+    const { data, isLoading, error } = useSWR(`/products/vendor`, apiFetcher);
 
     const [isOpen, setIsOpen] = useState(false);
     const [productToEdit, setProductToEdit] = useState(null)
 
     const handleDelete = async (id) => {
-        // Logic to delete the product
         const shouldDelete = window.confirm("Are you sure you want to delete this product?");
         if (!shouldDelete) return;
         try {
-            const response = await apiClient.delete(`/products/${id}`);
+            const response = await apiClient.delete(`/products/${id}`, null, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("ACCESS_TOKEN")}`,
+                }
+            });
             console.log(response.data)
-            setIsOpen(false); // Close modal after submission (add actual logic here)
+            window.location.reload()
         } catch (error) {
             console.error("Error submitting form:", error);
         }
-
     }
 
     const handleEdit = (id) => {
         // Logic to edit the product
         console.log(`Edit product with id: ${id}`);
-        const product = products.find(product => product.id === id);
+        const product = data[id];
         setProductToEdit(product);
         setIsOpen(true);
 
@@ -103,13 +63,13 @@ function VendorProducts() {
                             </tr>
                         </thead>
                         <tbody>
-                            {products.map((product, index) => (
+                            {!data ? "" : (data.map((product, index) => (
                                 <tr key={index} className="even:bg-gray-100 odd:bg-gray-50 hover:bg-gray-200 transition-colors">
-                                    <td className="py-3 px-4">{product.name}</td>
+                                    <td className="py-3 px-4">{product.productName}</td>
                                     <td className="py-3 px-4">
                                         <img
-                                            src={product.image}
-                                            alt={product.name}
+                                            src={product.images[0].url}
+                                            alt={'product image'}
                                             className="w-14 h-14 object-cover rounded-md"
                                         />
                                     </td>
@@ -117,11 +77,11 @@ function VendorProducts() {
                                     <td className="py-3 px-4 w-60">{product.description}</td>
                                     <td className="py-3 px-4">{product.quantity}</td>
                                     <td className="py-3 px-4 flex gap-2">
-                                        <Link to={`/vendors/products/${product.id}`} className="text-emerald-600 cursor-pointer p-2 rounded hover:bg-emerald-700 transition">
+                                        <Link to={`/vendors/products/${product.id}`} state={product} className="text-emerald-600 cursor-pointer p-2 rounded hover:bg-emerald-700 transition">
                                             <EyeIcon className="w-5 h-5 inline-block" />
                                         </Link>
 
-                                        <button onClick={() => handleEdit(product.id)} className="text-emerald-600 cursor-pointer p-2 rounded hover:bg-emerald-700 transition">
+                                        <button onClick={() => handleEdit(index)} className="text-emerald-600 cursor-pointer p-2 rounded hover:bg-emerald-700 transition">
                                             <EditIcon className="w-5 h-5 inline-block" />
                                         </button>
 
@@ -130,7 +90,7 @@ function VendorProducts() {
                                         </button>
                                     </td>
                                 </tr>
-                            ))}
+                            )))}
                         </tbody>
                     </table>
                 </div>

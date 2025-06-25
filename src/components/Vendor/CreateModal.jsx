@@ -5,10 +5,11 @@ const CreateModal = ({ setIsOpen, product, resetProduct }) => {
     const [formData, setFormData] = useState({
         id: product?.id || '',
         images: product?.images || '',
-        name: product?.name || '',
+        productName: product?.productName || '',
         category: product?.category || '',
         description: product?.description || '',
         price: product?.price || '',
+        quantity: product?.quantity || '',
     });
 
     const handleChange = (e) => {
@@ -62,10 +63,10 @@ const CreateModal = ({ setIsOpen, product, resetProduct }) => {
                             <input
                                 type="file"
                                 name="image"
-                                id="images"
+                                id="image"
                                 multiple
-                                accept="image/*"
-                                value={formData.images}
+                                accept="images/*"
+                                value={formData.image}
                                 onChange={handleChange}
                                 className="w-full p-2 border border-gray-400 h-14 rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gold-500"
                                 placeholder="Enter image URL"
@@ -92,9 +93,9 @@ const CreateModal = ({ setIsOpen, product, resetProduct }) => {
                             <label className="block mb-1 text-sm font-medium">Product Name</label>
                             <input
                                 type="text"
-                                name="name"
-                                id="name"
-                                value={formData.name}
+                                name="productName"
+                                id="productName"
+                                value={formData.productName}
                                 onChange={handleChange}
                                 className="w-full p-2 border border-gray-400 h-14 rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gold-500"
                                 placeholder="Enter product name"
