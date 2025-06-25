@@ -7,18 +7,22 @@ const teamMembers = [
   {
     name: 'Gustine',
     image: gustine,
+    role: 'Frontend Developer',
   },
   {
     name: 'Domatiara',
     image: domatiara,
+    role: 'Frontend Developer',
   },
   {
     name: 'Yoda',
     image: yoda,
+    role: 'Frontend Developer',
   },
   {
-    name: 'Chiamaka Nnakwu',
+    name: 'Chiamaka',
     image: chiamaka,
+    role: 'Product Manager/Frontend Developer',
   }
 ];
 
@@ -28,7 +32,7 @@ export default function TeamMembers() {
       <div className='text-center text-3xl font-serif font-bold mb-15'>
         <h1>MEET THE TEAM</h1>
       </div>
-      <div className="grid gap-10 md:grid-cols-3 justify-center items-center text-center">
+      <div className="grid gap-10 md:grid-cols-4 justify-center items-center text-center">
         {teamMembers.map((member, index) => (
           <div key={index}>
             <img
@@ -37,6 +41,7 @@ export default function TeamMembers() {
               className="w-60 h-60 mx-auto object-cover rounded-md shadow-sm"
             />
             <p className="mt-4 text-lg font-medium">{member.name}</p>
+            <p className="text-sm text-gray-600">{member.role}</p>
           </div>
         ))}
       </div>

@@ -24,18 +24,13 @@ export default function Login() {
             if (response.data.success) {
                 localStorage.setItem("ACCESS_TOKEN", response.data.token)
                 localStorage.setItem("username", response.data.username);
-                console.log(response.data);
-                navigate("/");
                 setValidCredentials(true);
                 // if (response.data.user.role = "vendor") {
                 //     navigate("/vendors/products");
                 // } else {
                 //     navigate("/");
                 // }
-                localStorage.setItem("username", response.data.username)
                 localStorage.setItem("role", response.data.role)
-                localStorage.setItem("ACCESS_TOKEN", response.data.token)
-                setValidCredentials(true);
                 if (response.data.role = "vendor") {
                     navigate("/vendors/products");
                 } else {
