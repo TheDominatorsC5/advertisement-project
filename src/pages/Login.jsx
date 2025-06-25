@@ -23,10 +23,10 @@ export default function Login() {
 
             if (response.data.success) {
                 localStorage.setItem("username", response.data.username)
-                navigate("/");
-                setValidCredentials(true);
+                localStorage.setItem("role", response.data.role)
                 localStorage.setItem("ACCESS_TOKEN", response.data.token)
-                if (response.data.user.role = "vendor") {
+                setValidCredentials(true);
+                if (response.data.role = "vendor") {
                     navigate("/vendors/products");
                 } else {
                     navigate("/");
