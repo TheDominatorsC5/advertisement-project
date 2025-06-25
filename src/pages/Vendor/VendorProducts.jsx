@@ -8,49 +8,7 @@ import Sidebar from '../../components/Vendor/VendorSidebar';
 import { apiFetcher, apiClient } from "../../api/client";
 import useSWR from "swr";
 
-
-const products = [
-    {
-        id: 1,
-        name: 'Handcrafted Necklace',
-        image: 'https://www.dropicts.com/wp-content/uploads/Dropicts-Feautred-Images-Beauty-Product-02.jpg',
-        price: '$45.00',
-        category: "Arts & Paintings",
-        description: 'Unique handcrafted necklace made with local materials',
-        quantity: 12,
-    },
-    {
-        id: 2,
-        name: 'Traditional Pottery Vase',
-        image: 'https://www.dropicts.com/wp-content/uploads/Dropicts-Feautred-Images-Beauty-Product-02.jpg',
-        price: '$30.00',
-        category: "Pottery",
-        description: 'Beautifully crafted pottery vase for home decor',
-        quantity: 5,
-    },
-    {
-        id: 3,
-        name: 'African Wax Print Fabric',
-        image: 'https://www.dropicts.com/wp-content/uploads/Dropicts-Feautred-Images-Beauty-Product-02.jpg',
-        price: '$60.00',
-        category: "Textiles",
-        description: 'High-quality African wax print fabric for clothing and crafts',
-        quantity: 20,
-    },
-    {
-        id: 4,
-        name: 'Wooden Wall Art',
-        image: 'https://www.dropicts.com/wp-content/uploads/Dropicts-Feautred-Images-Beauty-Product-02.jpg',
-        price: '$85.00',
-        category: "Wooden Pieces",
-        description: 'Beautifully carved wooden wall art piece',
-        quantity: 3,
-    },
-];
-
 function VendorProducts() {
-    // const vendorId = 1;
-    const navigate = useNavigate()
     const { data, isLoading, error } = useSWR(`/products/vendor`, apiFetcher);
 
     const [isOpen, setIsOpen] = useState(false);
@@ -69,7 +27,6 @@ function VendorProducts() {
         } catch (error) {
             console.error("Error submitting form:", error);
         }
-
     }
 
     const handleEdit = (id) => {
