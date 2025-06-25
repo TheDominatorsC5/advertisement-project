@@ -4,7 +4,7 @@ import { apiClient } from "../../api/client";
 const CreateModal = ({ setIsOpen, product, resetProduct }) => {
     const [formData, setFormData] = useState({
         id: product?.id || '',
-        image: product?.image || '',
+        images: product?.images || '',
         name: product?.name || '',
         category: product?.category || '',
         description: product?.description || '',
@@ -18,7 +18,11 @@ const CreateModal = ({ setIsOpen, product, resetProduct }) => {
 
     const handleSubmit = async (data) => {
         try {
-            const response = await apiClient.post("/api/adverts/products/create", data);
+            const response = await apiClient.post("/products/create", data, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("ACCESS_TOKEN")}`,
+                }
+            });
             console.log(response.data)
             setIsOpen(false); // Close modal after submission (add actual logic here)
         } catch (error) {
@@ -61,7 +65,7 @@ const CreateModal = ({ setIsOpen, product, resetProduct }) => {
                                 id="images"
                                 multiple
                                 accept="image/*"
-                                value={formData.image}
+                                value={formData.images}
                                 onChange={handleChange}
                                 className="w-full p-2 border border-gray-400 h-14 rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gold-500"
                                 placeholder="Enter image URL"

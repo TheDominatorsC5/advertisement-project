@@ -1,7 +1,19 @@
 import { BoxesIcon, User2Icon, LogOut, ListCheck } from "lucide-react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import { apiClient } from "../../api/client";
 
 export default function Sidebar() {
+  const navigate = useNavigate()
+  const logout = async () => {
+    await apiClient.post("/signout", null, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("ACCESS_TOKEN")}`,
+      }
+    })
+    localStorage.clear()
+    navigate("/login")
+  }
+
   return (
     <div className="col-span-2 min-h-screen bg-white border-r shadow-lg p-4 flex flex-col">
       {/* Logo */}
@@ -16,18 +28,20 @@ export default function Sidebar() {
 
       {/* Logout */}
       <div className="mt-auto">
-        <SidebarLink icon={<LogOut />} text="Logout" danger href='#' />
+        <button onClick={() => logout()} className="flex items-center gap-3 px-4 py-2 rounded-lg transition cursor-pointer text-red-600 hover:bg-red-100">
+          <span className="text-xl"><LogOut /></span>
+          <span>Logout</span>
+        </button>
       </div>
     </div>
   );
 }
 
-function SidebarLink({ icon, text, href, danger = false }) {
+function SidebarLink({ icon, text, href }) {
   return (
     <Link
       to={href || "#"}
-      className={`flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-emerald-100 transition ${danger ? "text-red-600 hover:bg-red-100" : "text-gray-700"
-        }`}
+      className="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-emerald-100 transition text-gray-700"
     >
       <span className="text-xl">{icon}</span>
       <span>{text}</span>

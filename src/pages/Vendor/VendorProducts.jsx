@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router';
 import CreateModal from '../../components/Vendor/CreateModal';
 import { EditIcon, DeleteIcon, EyeIcon } from 'lucide-react';
 import Sidebar from '../../components/Vendor/VendorSidebar';
-import {apiFetcher, apiClient } from "../../api/client";
+import { apiFetcher, apiClient } from "../../api/client";
 import useSWR from "swr";
 
 
@@ -51,7 +51,7 @@ const products = [
 function VendorProducts() {
     const vendorId = 1;
     const navigate = useNavigate()
-    const { data, isLoading, error } = useSWR(`/api/adverts/products/vendor/${vendorId}`, apiFetcher);
+    const { data, isLoading, error } = useSWR(`/products/vendor/${vendorId}`, apiFetcher);
 
     const [isOpen, setIsOpen] = useState(false);
     const [productToEdit, setProductToEdit] = useState(null)
@@ -60,8 +60,8 @@ function VendorProducts() {
         // Logic to delete the product
         const shouldDelete = window.confirm("Are you sure you want to delete this product?");
         if (!shouldDelete) return;
-                try {
-            const response = await apiClient.delete(`/api/adverts/products/${id}`);
+        try {
+            const response = await apiClient.delete(`/products/${id}`);
             console.log(response.data)
             setIsOpen(false); // Close modal after submission (add actual logic here)
         } catch (error) {
