@@ -20,21 +20,21 @@ export default function Login() {
                     "Content-Type": "application/json",
                 }
             });
-            
+
             if (response.data.success) {
                 localStorage.setItem("username", response.data.username)
                 navigate("/");
                 setValidCredentials(true);
-                // localStorage.setItem("ACCESS_TOKEN", response.data.token)
-                // if (response.data.user.role = "vendor") {
-                //     navigate("/vendors/products");
-                // } else {
-                //     navigate("/");
-                // }
+                localStorage.setItem("ACCESS_TOKEN", response.data.token)
+                if (response.data.user.role = "vendor") {
+                    navigate("/vendors/products");
+                } else {
+                    navigate("/");
+                }
             } else {
                 setValidCredentials(false);
             }
-            
+
         } catch (error) {
             setValidCredentials(false);
         }
@@ -74,7 +74,7 @@ export default function Login() {
                                     class="mt-1 block w-full px-3 py-2 border border-gray-500 rounded-md shadow-sm focus:outline-none focus:ring-[#29492f] focus:border-green-700 sm:text-sm"
                                     placeholder="**********"
                                 />
-                                <div style={{display: !isValidCredentials ? 'flex' : 'none'}} className='mt-[5px]'>
+                                <div style={{ display: !isValidCredentials ? 'flex' : 'none' }} className='mt-[5px]'>
                                     <p style={{
                                         fontSize: '14px',
                                         fontStyle: 'italic',
@@ -87,7 +87,7 @@ export default function Login() {
                                     <SubmitButton
                                         className="bg-green-700 text-white hover:bg-[#29492f] transition duration-300 block px-8 py-2 border rounded-md font-semibold"
                                         title={"Login"} />
-                                    
+
                                     <button className='text-green-700 hover:text-[#29492f]'><a href="">Forgot Password?</a></button>
                                 </div>
                                 <div className="flex items-center">

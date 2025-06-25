@@ -1,21 +1,47 @@
+import { Link } from 'react-router';
+import { ShoppingCart, SquarePen, Trash2 } from 'lucide-react';
+import { useSearchParams, useNavigate } from 'react-router';
+import { apiClient } from '../api/client';
+import { useEffect, useState } from 'react';
+
 export default function ViewAProduct() {
+
+    const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const id = searchParams.get('id');
+
+  const [product, setProduct] = useState({});
+
+  const getBook = () => {
+    apiClient.get(`/product/${id}`)
+      .then((response) => {
+        console.log(response.data);
+        setProduct(response.data)
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+  }
+
+  useEffect(getBook, []);
 
     return (
         <>
             <section className="">
-                <div className="grid grid-cols-2 justify-around">
-                    <div className="border border-gray-500 w-[400px] h-[500px]">
+                <div className="h-[20vh]"></div>
+                <div className="md:flex justify-around">
+                    <div className="border border-gray-500 md:w-[400px] h-100 md:h-[500px]">
                         <img 
                         src="" 
                         alt="" />
                     </div>
 
-                    <div>
-                        <h1 className="text-3xl font-semibold mb-4">PRODUCT NAME</h1>
+                    <div className="md:w-1/2">
+                        <h1 className="text-3xl font-semibold mb-4">{product.productname}</h1>
 
-                        <p className="text-xl text-red-500 font-semibold mb-4">PRICE</p>
+                        <p className="text-xl text-red-500 font-semibold mb-4">{product.price}</p>
 
-                        <p>DESCRIPTION - Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis quis ullam soluta dignissimos at, nostrum consequatur amet! Dicta quo sed veritatis dolores quasi, in velit voluptates sit optio repellat, a nisi, adipisci suscipit. Illum cumque debitis dolore ea natus, facilis minus distinctio non consectetur consequatur sapiente ex voluptate deleniti accusantium.</p>
+                        <p>DESCRIPTION - {product.description}</p>
 
                         <div className="flex mt-4 gap-4">
                             <input
@@ -27,8 +53,15 @@ export default function ViewAProduct() {
                             <button className="bg-green-700 text-white hover:bg-[#29492f] transition duration-300 block px-8 py-2 border rounded-md font-semibold"><a href="">Buy Now</a></button>
                         </div>
 
+                        <div>
+                    <p>Company Name:</p>
+                    <p>Location:</p>
+                    <p>Tel:</p>
+                </div>
+
                     </div>
                 </div>
+                
             </section>
 
         </>
