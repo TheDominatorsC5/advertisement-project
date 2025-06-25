@@ -8,9 +8,9 @@ export default function ViewProduct() {
             <div>
                 <Navbar />
 
-                <section className="h-screen md:flex justify-between items-end text-slate-700 bg-yellow-200 p-8">
+                <section className="h-full md:flex justify-between items-end text-slate-700 bg-yellow-200 p-8">
                 
-                    <div className="">
+                    <div className="md:mx-12">
                         <ViewAProduct />
                     </div>
                 </section>
