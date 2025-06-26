@@ -40,9 +40,9 @@ export default function WoovenPieces() {
     ];
 
     const filteredProducts = sampleProducts.filter((product) =>
-        product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        product.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        product.price.toString().includes(searchTerm)
+        product.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        (product.category || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
+        product.price?.toString().includes(searchTerm)
     );
 
 
@@ -110,7 +110,11 @@ export default function WoovenPieces() {
                             <Link to="/woovenpieces" ><button className="block w-full text-left hover:text-amber-500 transition font-medium">Wooden Pieces</button>
                             </Link>
                         </li>
-                        
+                        <li>
+                            <Link to="/viewallproduct" ><button className="block w-full text-left hover:text-amber-500 transition font-medium">All Products</button>
+                            </Link>
+                        </li>
+
                     </ul>
                 </aside>
 
@@ -120,9 +124,19 @@ export default function WoovenPieces() {
                     <h4 className="text-xl font-medium text-gray-900 text-center mb-6">
                         WOODEN PIECES</h4>
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                        {data?.products?.map(product => (
-                            <ProductCards key={product.id} product={product} />
-                        ))}
+                        {data?.products
+                            ?.filter(product => {
+                                const nameMatch = product.name?.toLowerCase().includes(searchTerm.toLowerCase());
+                                const categoryMatch = (product.category || '').toLowerCase().includes(searchTerm.toLowerCase());
+                                const priceMatch = product.price?.toString().includes(searchTerm);
+                                return nameMatch || categoryMatch || priceMatch;
+                            })
+                            .map(product => (
+                                <ProductCards key={product.id} product={product} />
+                            ))}
+                        {data?.products?.length > 0 && filteredProducts.length === 0 && (
+                            <p className="text-center col-span-full text-gray-500">No products match your search.</p>
+                        )}
                     </div>
                 </section>
             </div>
