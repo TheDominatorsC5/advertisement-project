@@ -1,13 +1,36 @@
+import React, { useState } from 'react';
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { Truck, LucideHeadset, ShieldPlus } from "lucide-react";
-import HomeProductCards from "../components/HomeProductCards";
+import ProductCards from "../components/ProductCards";
 import HeroSlideshow from "../components/HeroSlideshow.jsx";
 import CatIcons from "../components/CatIcons.jsx";
 import { Link } from "react-router";
+import { apiFetcher } from "../api/client.js";
+import useSWR from "swr";
+import { ClockLoader } from "react-spinners";
 
 
 export default function Home() {
+    const { data, isLoading, error } = useSWR("/products", apiFetcher)
+
+    if (isLoading) {
+        return (
+            <div>
+                <ClockLoader />
+            </div>
+        );
+    }
+
+    if (error) {
+        return (
+            <div>
+                <h1>something went wrong</h1>
+            </div>
+        );
+    }
+
+
     return (
         <>
             <Navbar />
@@ -21,10 +44,15 @@ export default function Home() {
 
                 <div className="flex flex-col justify-center px-24 py-15 my-10 bg-[#E6C744]">
                     <h3 className="text-center text-4xl font-extrabold">
-                        New <br />Arrival
+                        New <br />Arrivals
                     </h3>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 p-6 gap-6 justify-around w-full mx-auto">
+                    {/* <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 p-6 gap-6 justify-around w-full mx-auto">
                         {[1, 2, 3, 4, 5, 6].map(n => <HomeProductCards key={n} />)}
+                    </div> */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                        {data?.products?.map(product => (
+                            <ProductCards key={product.id} product={product} />
+                        ))}
                     </div>
 
                     <Link to="/viewallproduct" className="flex justify-center my-20">
