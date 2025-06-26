@@ -2,6 +2,7 @@ import gustine from '../../assets/images/gustine.png';
 import domatiara from '../../assets/images/domatiara.png';
 import chiamaka from '../../assets/images/chiamaka.png';
 import yoda from '../../assets/images/yoda.png';
+import isaac from '../../assets/images/isaac.png';
 
 const teamMembers = [
   {
@@ -23,6 +24,11 @@ const teamMembers = [
     name: 'Chiamaka',
     image: chiamaka,
     role: 'Product Manager/Frontend Developer',
+  },
+   {
+    name: 'Isaac',
+    image: isaac,
+    role: 'Backend Developer',
   }
 ];
 
@@ -32,7 +38,7 @@ export default function TeamMembers() {
       <div className='text-center text-3xl font-serif font-bold mb-15'>
         <h1>MEET THE TEAM</h1>
       </div>
-      <div className="grid gap-10 md:grid-cols-4 justify-center items-center text-center">
+      <div className="grid gap-10 md:grid-cols-3 justify-center items-center text-center">
         {teamMembers.map((member, index) => (
           <div key={index}>
             <img

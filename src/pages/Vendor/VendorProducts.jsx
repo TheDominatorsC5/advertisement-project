@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 import { createPortal } from 'react-dom';
-import { Link, useNavigate } from 'react-router';
+import { Link } from 'react-router';
 import CreateModal from '../../components/Vendor/CreateModal';
 import { EditIcon, DeleteIcon, EyeIcon } from 'lucide-react';
 import Sidebar from '../../components/Vendor/VendorSidebar';
@@ -9,24 +9,32 @@ import { apiFetcher, apiClient } from "../../api/client";
 import useSWR from "swr";
 
 function VendorProducts() {
-    const { data, isLoading, error } = useSWR(`/products/vendor`, apiFetcher);
+    const { data, isLoading, isValidating, mutate } = useSWR(`/products/vendor`, apiFetcher);
 
     const [isOpen, setIsOpen] = useState(false);
     const [productToEdit, setProductToEdit] = useState(null)
+    const [productIdToDelete, setProductIdToDelete] = useState(null);
 
     const handleDelete = async (id) => {
         const shouldDelete = window.confirm("Are you sure you want to delete this product?");
         if (!shouldDelete) return;
+        setProductIdToDelete(id);
         try {
-            const response = await apiClient.delete(`/products/${id}`, null, {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem("ACCESS_TOKEN")}`,
+            await apiClient.delete(`/products/${id}`);
+            // Optimistic update (optional): Remove the item from data before refetch
+            mutate((currentData) => {
+                if (currentData) {
+                    return currentData.filter((item) => item.id !== id);
                 }
-            });
-            console.log(response.data)
-            window.location.reload()
+                return currentData;
+            }, false); // false to skip revalidation here
+
+            // Trigger refetch to get the latest data
+            await mutate();
         } catch (error) {
             console.error("Error submitting form:", error);
+        } finally {
+            setProductIdToDelete(null);
         }
     }
 
@@ -62,9 +70,9 @@ function VendorProducts() {
                                 <th className="py-3 px-4 text-left">Menu Action</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody className={`${isLoading || isValidating ? "opacity-45" : ""}`}>
                             {!data ? "" : (data.map((product, index) => (
-                                <tr key={index} className="even:bg-gray-100 odd:bg-gray-50 hover:bg-gray-200 transition-colors">
+                                <tr key={index} className={`even:bg-gray-100 odd:bg-gray-50 hover:bg-gray-200 transition-colors ${productIdToDelete === product.id ? "cursor-not-allowed bg-transparent text-gray-400" : ""}`}>
                                     <td className="py-3 px-4">{product.productName}</td>
                                     <td className="py-3 px-4">
                                         <img
@@ -77,15 +85,15 @@ function VendorProducts() {
                                     <td className="py-3 px-4 w-60">{product.description}</td>
                                     <td className="py-3 px-4">{product.quantity}</td>
                                     <td className="py-3 px-4 flex gap-2">
-                                        <Link to={`/vendors/products/${product.id}`} state={product} className="text-emerald-600 cursor-pointer p-2 rounded hover:bg-emerald-700 transition">
+                                        <Link to={`/vendors/products/${product.id}`} state={product} className={`p-2 rounded transition ${productIdToDelete === product.id ? "cursor-not-allowed hover:bg-transparent text-gray-400 hover:text-gray-400" : "text-cyan-600 hover:bg-cyan-700 hover:text-white"}`}>
                                             <EyeIcon className="w-5 h-5 inline-block" />
                                         </Link>
 
-                                        <button onClick={() => handleEdit(index)} className="text-emerald-600 cursor-pointer p-2 rounded hover:bg-emerald-700 transition">
+                                        <button onClick={() => handleEdit(index)} disabled={productIdToDelete === product.id} className="text-emerald-600 cursor-pointer p-2 rounded hover:bg-emerald-700 hover:text-white transition disabled:cursor-not-allowed disabled:bg-transparent disabled:text-gray-400">
                                             <EditIcon className="w-5 h-5 inline-block" />
                                         </button>
 
-                                        <button onClick={() => handleDelete(product.id)} className="text-red-600 cursor-pointer p-2 rounded hover:bg-emerald-700 transition">
+                                        <button onClick={() => handleDelete(product.id)} disabled={productIdToDelete === product.id} className="text-red-600 cursor-pointer p-2 rounded hover:bg-red-600 hover:text-white transition disabled:cursor-not-allowed disabled:bg-transparent disabled:text-gray-400">
                                             <DeleteIcon className="w-5 h-5 inline-block" />
                                         </button>
                                     </td>
@@ -94,7 +102,7 @@ function VendorProducts() {
                         </tbody>
                     </table>
                 </div>
-                {isOpen && createPortal(<CreateModal setIsOpen={setIsOpen} product={productToEdit} resetProduct={setProductToEdit} />, document.body)}
+                {isOpen && createPortal(<CreateModal mutate={mutate} setIsOpen={setIsOpen} product={productToEdit} resetProduct={setProductToEdit} />, document.body)}
             </div>
         </div>
     )

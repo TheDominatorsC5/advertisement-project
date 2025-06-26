@@ -5,13 +5,14 @@ import { apiClient } from "../../api/client";
 export default function Sidebar() {
   const navigate = useNavigate()
   const logout = async () => {
-    await apiClient.post("/signout", null, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("ACCESS_TOKEN")}`,
-      }
-    })
-    localStorage.clear()
-    navigate("/login")
+    try {
+      await apiClient.post("/signout")
+    } catch (error) {
+      console.log(error)
+    } finally {
+      localStorage.clear()
+      navigate("/login")
+    }
   }
 
   return (
@@ -22,7 +23,7 @@ export default function Sidebar() {
       {/* Navigation Links */}
       <nav className="flex flex-col gap-4 text-gray-700 font-medium">
         <SidebarLink icon={<BoxesIcon />} text="My Products" href="/vendors/products" />
-        <SidebarLink icon={<ListCheck />} text="Orders" href="#" />
+        <SidebarLink icon={<ListCheck />} text="Orders" href="/vendors/orders" />
         <SidebarLink icon={<User2Icon />} text="Profile" href='/vendors/profile' />
       </nav>
 

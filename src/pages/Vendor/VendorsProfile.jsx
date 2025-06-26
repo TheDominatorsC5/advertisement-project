@@ -4,13 +4,13 @@ import Sidebar from '../../components/Vendor/VendorSidebar';
 
 export default function VendorsOnboardingPage() {
   const navigate = useNavigate();
-
+  
   const [formData, setFormData] = useState({
-    firstName: 'Kwame',
-    lastName: 'Kusi',
-    email: 'kusi@gmail.com',
-    shopName: '',
-    shopAddress: '',
+    firstName: localStorage.getItem("username") || localStorage.getItem("firstName") || "",
+    lastName: localStorage.getItem("lastName") || "",
+    email: localStorage.getItem("email") || "",
+    shopName: localStorage.getItem("shopName") || "",
+    shopAddress: localStorage.getItem("shopAddress") || "",
   });
 
   const handleChange = (e) => {

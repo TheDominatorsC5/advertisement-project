@@ -12,7 +12,7 @@ export default function SubmitButton({ title, className, onclick }) {
             disabled={pending}
             onClick={onclick}
         >
-            {pending ? "loading..." : title}
+            {pending ? "Submitting..." : title}
         </button>
     );
 }

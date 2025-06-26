@@ -21,6 +21,7 @@ import ProductCategoryType from "./pages/Vendor/ProductCategoryType"
 import ViewProduct from "./pages/ViewProduct"
 import VendorProducts from "./pages/Vendor/VendorProducts"
 import ViewAllProduct from "./pages/ViewAllProduct"
+import VendorOrders from "./pages/Vendor/VendorOrders"
 
 const adwumaCraftRouter = createBrowserRouter([
   { path: '/', element: <Home /> },
@@ -33,6 +34,7 @@ const adwumaCraftRouter = createBrowserRouter([
   { path: '/contact', element: <Contact /> },
   { path: '/vendors/profile', element: <VendorsProfile /> },
   { path: '/vendors/products', element: <VendorProducts /> },
+  { path: '/vendors/orders', element: <VendorOrders /> },
   { path: '/vendors/products/:id', element: <VendorViewProduct /> },
   { path: '/vendors/products/categories/:type', element: <ProductCategoryType /> },
   { path: '/woovenpieces', element: <WoovenPieces /> },

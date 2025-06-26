@@ -1,7 +1,8 @@
 import { useState } from 'react';
+import SubmitButton from '../../components/SubmitButton';
 import { apiClient } from "../../api/client";
 
-const CreateModal = ({ setIsOpen, product, resetProduct }) => {
+const CreateModal = ({ mutate, setIsOpen, product, resetProduct }) => {
     const [formData, setFormData] = useState({
         id: product?.id || '',
         images: product?.images || '',
@@ -19,19 +20,19 @@ const CreateModal = ({ setIsOpen, product, resetProduct }) => {
 
     const handleSubmit = async (data) => {
         try {
-            const response = await apiClient.post("/products/create", data, {
+            await apiClient.post("/products/create", data, {
                 headers: {
-                    Authorization: `Bearer ${localStorage.getItem("ACCESS_TOKEN")}`,
+                    'Content-Type': 'multipart/form-data',
                 }
             });
-            console.log(response.data)
-            setIsOpen(false); // Close modal after submission (add actual logic here)
+            await mutate();
+            setIsOpen(false); 
         } catch (error) {
             console.error("Error submitting form:", error);
         }
     };
 
-    const category = ['Arts %26 Paintings', 'Accessories', 'Home Deco', 'Pottery', 'Textiles', 'Wooden Pieces'];
+    const category = ['Arts & Paintings', 'Accessories', 'Home Deco', 'Pottery', 'Textiles', 'Wooden Pieces'];
 
     return (
         <div
@@ -150,15 +151,13 @@ const CreateModal = ({ setIsOpen, product, resetProduct }) => {
                         >
                             Cancel
                         </button>
-                        <button
-                            type="submit"
-                            onClick={() =>
+                        <SubmitButton
+                            title={product ? "Update" : "Create"}
+                            onclick={() =>
                                 resetProduct(null)
                             }
                             className="cursor-pointer text-white bg-emerald-600 font-semibold py-2 px-4 rounded-lg hover:bg-gold-600 transition"
-                        >
-                            {product ? "Update" : "Create"}
-                        </button>
+                        />
                     </div>
                 </form>
 

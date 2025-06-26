@@ -3,10 +3,11 @@ import { useState } from 'react';
 import { createPortal } from 'react-dom';
 import CreateModal from '../../components/Vendor/CreateModal';
 import Sidebar from '../../components/Vendor/VendorSidebar';
-import { useLocation } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 import { apiClient } from '../../api/client';
 
 export default function VendorProductView() {
+    const navigate = useNavigate()
     const product = useLocation().state;
     const [isOpen, setIsOpen] = useState(false);
     const [mainImage, setMainImage] = useState(product.images[0].url);
@@ -15,13 +16,8 @@ export default function VendorProductView() {
         const shouldDelete = window.confirm("Are you sure you want to delete this product?");
         if (!shouldDelete) return;
         try {
-            const response = await apiClient.delete(`/products/${id}`, null, {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem("ACCESS_TOKEN")}`,
-                }
-            });
-            console.log(response.data)
-            window.location.reload()
+            await apiClient.delete(`/products/${id}`);
+            navigate(-1)
         } catch (error) {
             console.error("Error submitting form:", error);
         }

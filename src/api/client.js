@@ -1,14 +1,23 @@
 import axios from "axios";
 
 export const apiClient = axios.create({
-    baseURL: import.meta.env.VITE_BASE_URL
+    baseURL: import.meta.env.VITE_BASE_URL,
+    headers: {
+        'Content-Type': 'application/json',
+    },
 });
 
-export const apiFetcher = async (url) => {
-   const response = await apiClient.get(url, {
-    headers: {
-        Authorization: `Bearer ${localStorage.getItem("ACCESS_TOKEN")}`,
+// Add interceptor to include token
+apiClient.interceptors.request.use((config) => {
+    const token = localStorage.getItem('ACCESS_TOKEN');
+    if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
     }
-   });
-   return response.data;
+    return config;
+}, (error) => Promise.reject(error));
+
+
+export const apiFetcher = async (url) => {
+    const response = await apiClient.get(url);
+    return response.data;
 }

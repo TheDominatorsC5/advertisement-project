@@ -25,11 +25,6 @@ export default function Login() {
                 localStorage.setItem("ACCESS_TOKEN", response.data.token)
                 localStorage.setItem("username", response.data.username);
                 setValidCredentials(true);
-                // if (response.data.user.role = "vendor") {
-                //     navigate("/vendors/products");
-                // } else {
-                //     navigate("/");
-                // }
                 localStorage.setItem("role", response.data.role)
                 if (response.data.role = "vendor") {
                     navigate("/vendors/products");
