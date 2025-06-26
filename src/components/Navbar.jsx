@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router';
-import { Store, UserIcon, Menu, X } from 'lucide-react';
+import { ShoppingBag, UserIcon, Menu, X } from 'lucide-react';
 import { useEffect } from 'react';
 
 export default function Navbar() {
@@ -46,15 +46,15 @@ export default function Navbar() {
 
         {/* Icons & Hamburger */}
         <div className="flex items-center space-x-4 md:space-x-6">
-          <Link to={"/vendors/products"}>
-            <Store className="hover:text-red-500" />
+          <Link to={""}>
+            <ShoppingBag className="hover:text-red-500" />
           </Link>
 
-          <div className='flex items-center'>
+          <div className='flex items-center gap-1'>
               <Link to={"/login"}>
             <UserIcon className="hover:text-red-500" />
           </Link>
-          <p className='font-bold text-red-500 text-lg uppercase'>{username}</p>
+          <p className='font-bold text-green-500 text-lg uppercase'>{username}</p>
           </div>
           
           {/* Hamburger menu for mobile */}

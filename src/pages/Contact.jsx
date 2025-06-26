@@ -1,6 +1,7 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { Phone, Mail } from "lucide-react";
+import { Link } from "react-router";
 
 export default function Contact() {
     return (
@@ -65,7 +66,9 @@ export default function Contact() {
                                 placeholder="Your Message"
                                 className="w-full p-2 h-40 my-8 border bg-white border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 text-zinc-500"></textarea>
                         </div>
-                        <button className="bg-red-500 hover:bg-red-800 text-white px-8 py-2 rounded transition-colors mt-4">Send Message</button>
+                        <Link to="mailto:bookyodastudios@gmail.com">
+                            <button className="bg-red-500 hover:bg-red-800 text-white px-8 py-2 rounded transition-colors mt-4">Send Message</button>
+                        </Link>
                     </form>
 
 
