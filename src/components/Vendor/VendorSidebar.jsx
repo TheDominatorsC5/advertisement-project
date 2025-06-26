@@ -11,7 +11,7 @@ export default function Sidebar() {
       console.log(error)
     } finally {
       localStorage.clear()
-      navigate("/login")
+      navigate("/")
     }
   }
 
