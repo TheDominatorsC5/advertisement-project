@@ -18,12 +18,12 @@ const teamMembers = [
   {
     name: 'Yoda',
     image: yoda,
-    role: 'Frontend Developer',
+    role: 'Frontend Developer/Designer',
   },
   {
     name: 'Chiamaka',
     image: chiamaka,
-    role: 'Product Manager/Frontend Developer',
+    role: 'Frontend Developer/Product Manager',
   },
    {
     name: 'Isaac',
