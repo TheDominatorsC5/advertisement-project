@@ -71,7 +71,6 @@ const CreateModal = ({ mutate, setIsOpen, product, resetProduct }) => {
 
                     {/* Modal Body - Form */}
                     <div className="space-y-3">
-                        {!productId && (
                             <div>
                                 <label className="block mb-1 text-sm font-medium">Product Image(s)</label>
                                 <input
@@ -85,7 +84,6 @@ const CreateModal = ({ mutate, setIsOpen, product, resetProduct }) => {
                                     className="w-full p-2 border border-gray-400 h-14 rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gold-500"
                                 />
                             </div>
-                        )}
                         <div>
                             <label className="block mb-1 text-sm font-medium">Product Category</label>
                             <select
