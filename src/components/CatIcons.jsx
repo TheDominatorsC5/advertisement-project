@@ -35,7 +35,7 @@ export default function CatIcons() {
                     </button>
                 </Link>
 
-                <Link to={"/textiles"}>
+                <Link to={"/textile"}>
                     <button className="flex flex-col items-center p-4 px-6 rounded-lg shadow-md border hover:bg-red-500 hover:text-white w-36">
                         <Shirt className="mb-3 w-10 h-10" />
                         <p className="text-sm text-center">Textiles</p>
