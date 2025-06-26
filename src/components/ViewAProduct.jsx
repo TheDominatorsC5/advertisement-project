@@ -13,7 +13,7 @@ export default function ViewAProduct() {
     const [product, setProduct] = useState({});
 
     const getProduct = () => {
-        apiClient.get(`/product/${id}`)
+        apiClient.get(`/adverts/products/product/${id}`)
             .then((response) => {
                 console.log(response.data);
                 setProduct(response.data.product)
@@ -23,7 +23,10 @@ export default function ViewAProduct() {
             })
     }
 
-    useEffect(getProduct, []);
+    // useEffect(getProduct, []);
+    useEffect(() => {
+        if (id) getProduct();
+    }, [id]);
 
     return (
         <>
