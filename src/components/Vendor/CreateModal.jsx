@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import SubmitButton from '../../components/SubmitButton';
 import { apiClient } from "../../api/client";
 
@@ -12,6 +12,14 @@ const CreateModal = ({ mutate, setIsOpen, product, resetProduct }) => {
         price: product?.price || '',
         quantity: product?.quantity || '',
     });
+    const [productId, setProductId] = useState(null)
+
+    useEffect(() => {
+        if (product) {
+            setProductId(product.id)
+        }
+    }, [])
+
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -20,13 +28,17 @@ const CreateModal = ({ mutate, setIsOpen, product, resetProduct }) => {
 
     const handleSubmit = async (data) => {
         try {
-            await apiClient.post("/products/create", data, {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                }
-            });
+            if (productId) {
+                await apiClient.patch("/products/edit/" + productId, data);
+            } else {
+                await apiClient.post("/products/create", data, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                    }
+                });
+            }
             await mutate();
-            setIsOpen(false); 
+            setIsOpen(false);
         } catch (error) {
             console.error("Error submitting form:", error);
         }
@@ -55,29 +67,31 @@ const CreateModal = ({ mutate, setIsOpen, product, resetProduct }) => {
                 <form action={handleSubmit}>
 
                     {/* Modal Header */}
-                    <h2 className="text-2xl font-bold text-gold-500 mb-4">{product ? "Edit" : "Create"} Product</h2>
+                    <h2 className="text-2xl font-bold text-gold-500 mb-4">{productId ? "Edit" : "Create"} Product</h2>
 
                     {/* Modal Body - Form */}
                     <div className="space-y-3">
-                        <div>
-                            <label className="block mb-1 text-sm font-medium">Product Image</label>
-                            <input
-                                type="file"
-                                name="image"
-                                id="image"
-                                multiple
-                                accept="images/*"
-                                value={formData.image}
-                                onChange={handleChange}
-                                className="w-full p-2 border border-gray-400 h-14 rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gold-500"
-                                placeholder="Enter image URL"
-                            />
-                        </div>
+                        {!productId && (
+                            <div>
+                                <label className="block mb-1 text-sm font-medium">Product Image(s)</label>
+                                <input
+                                    type="file"
+                                    name="image"
+                                    id="image"
+                                    multiple
+                                    accept="images/*"
+                                    value={formData.image}
+                                    onChange={handleChange}
+                                    className="w-full p-2 border border-gray-400 h-14 rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gold-500"
+                                />
+                            </div>
+                        )}
                         <div>
                             <label className="block mb-1 text-sm font-medium">Product Category</label>
                             <select
                                 name="category"
                                 id="category"
+                                required
                                 value={formData.category}
                                 onChange={handleChange}
                                 className="w-full p-2 border border-gray-400 h-14 rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gold-500"
@@ -96,6 +110,7 @@ const CreateModal = ({ mutate, setIsOpen, product, resetProduct }) => {
                                 type="text"
                                 name="productName"
                                 id="productName"
+                                required
                                 value={formData.productName}
                                 onChange={handleChange}
                                 className="w-full p-2 border border-gray-400 h-14 rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gold-500"
@@ -108,6 +123,7 @@ const CreateModal = ({ mutate, setIsOpen, product, resetProduct }) => {
                                 type="text"
                                 name="description"
                                 id="description"
+                                required
                                 value={formData.description}
                                 onChange={handleChange}
                                 className="w-full p-2 border border-gray-400 h-14 rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gold-500"
@@ -119,6 +135,7 @@ const CreateModal = ({ mutate, setIsOpen, product, resetProduct }) => {
                             <input
                                 type="number"
                                 name="price"
+                                required
                                 id="price"
                                 value={formData.price}
                                 onChange={handleChange}
@@ -132,6 +149,7 @@ const CreateModal = ({ mutate, setIsOpen, product, resetProduct }) => {
                                 type="number"
                                 name="quantity"
                                 id="quantity"
+                                required
                                 value={formData.quantity}
                                 onChange={handleChange}
                                 className="w-full p-2 border border-gray-400 h-14 rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gold-500"
@@ -152,7 +170,7 @@ const CreateModal = ({ mutate, setIsOpen, product, resetProduct }) => {
                             Cancel
                         </button>
                         <SubmitButton
-                            title={product ? "Update" : "Create"}
+                            title={productId ? "Update" : "Create"}
                             onclick={() =>
                                 resetProduct(null)
                             }
