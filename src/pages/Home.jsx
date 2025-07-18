@@ -12,7 +12,7 @@ import { ClockLoader } from "react-spinners";
 
 
 export default function Home() {
-    const { data, isLoading, error } = useSWR("/products", apiFetcher)
+    const { data, isLoading, error } = useSWR("/products?limit=6", apiFetcher);
 
     if (isLoading) {
         return (
